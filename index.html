@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InIce — 世界本喧，此处冰点</title>
+    <meta name="description" content="InIce, where noise dissolves into stillness. 七脉轮草本线香">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;600;700&family=Noto+Sans+SC:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-cream: #F7F3EC;
+            --bg-white: #FDFCFA;
+            --bg-warm: #F0EAE0;
+            --text-primary: #2C2C2C;
+            --text-secondary: #6B6560;
+            --text-muted: #9E9790;
+            --accent-gold: #C4A882;
+            --accent-warm: #B8956A;
+            --border-light: rgba(196, 168, 130, 0.2);
+            --transition-slow: 1.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+            --transition-medium: 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+            --transition-fast: 0.4s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            font-weight: 300;
+            color: var(--text-primary);
+            background-color: var(--bg-cream);
+            line-height: 1.8;
+            letter-spacing: 0.02em;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ===== LOADING SCREEN ===== */
+        #loading {
+            position: fixed;
+            inset: 0;
+            background: var(--bg-cream);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 1.5s ease, visibility 1.5s ease;
+        }
+
+        #loading.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loading-content {
+            text-align: center;
+        }
+
+        .loading-brand {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            font-weight: 300;
+            letter-spacing: 0.3em;
+            color: var(--text-primary);
+            opacity: 0;
+            animation: fadeInUp 2s ease forwards;
+        }
+
+        .loading-line {
+            width: 40px;
+            height: 1px;
+            background: var(--accent-gold);
+            margin: 1.5rem auto;
+            opacity: 0;
+            animation: fadeInUp 2s ease 0.5s forwards;
+        }
+
+        .loading-sub {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 0.8rem;
+            font-weight: 300;
+            letter-spacing: 0.4em;
+            color: var(--text-muted);
+            opacity: 0;
+            animation: fadeInUp 2s ease 1s forwards;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ===== SCROLL REVEAL ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 { transition-delay: 0.15s; }
+        .reveal-delay-2 { transition-delay: 0.3s; }
+        .reveal-delay-3 { transition-delay: 0.45s; }
+        .reveal-delay-4 { transition-delay: 0.6s; }
+        .reveal-delay-5 { transition-delay: 0.75s; }
+
+        /* ===== NAVIGATION ===== */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 2rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background var(--transition-fast), padding var(--transition-fast);
+        }
+
+        nav.scrolled {
+            background: rgba(247, 243, 236, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 1.2rem 4rem;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-weight: 400;
+            letter-spacing: 0.2em;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-family: 'Noto Sans SC', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 400;
+            letter-spacing: 0.15em;
+            color: var(--text-secondary);
+            text-decoration: none;
+            position: relative;
+            padding-bottom: 4px;
+            transition: color var(--transition-fast);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--accent-gold);
+            transition: width var(--transition-fast);
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            background: var(--bg-cream);
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-brand {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 300;
+            letter-spacing: 0.25em;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .hero-line {
+            width: 60px;
+            height: 1px;
+            background: var(--accent-gold);
+            margin: 0 auto 2rem;
+        }
+
+        .hero-slogan {
+            font-family: 'Noto Serif SC', serif;
+            font-size: clamp(1rem, 2.5vw, 1.4rem);
+            font-weight: 300;
+            letter-spacing: 0.3em;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .hero-slogan-en {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(0.85rem, 2vw, 1.1rem);
+            font-weight: 300;
+            font-style: italic;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-hint span {
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            color: var(--text-muted);
+            writing-mode: vertical-rl;
+        }
+
+        .scroll-hint .arrow {
+            width: 1px;
+            height: 30px;
+            background: linear-gradient(to bottom, var(--accent-gold), transparent);
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(8px); }
+        }
+
+        /* ===== SECTION COMMON ===== */
+        section {
+            padding: 10rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-label {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.75rem;
+            font-weight: 400;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: 400;
+            letter-spacing: 0.15em;
+            color: var(--text-primary);
+            line-height: 1.4;
+        }
+
+        .section-title-en {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(0.9rem, 2vw, 1.2rem);
+            font-weight: 300;
+            font-style: italic;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+            letter-spacing: 0.05em;
+        }
+
+        .divider {
+            width: 30px;
+            height: 1px;
+            background: var(--accent-gold);
+            margin: 2rem auto;
+        }
+
+        /* ===== BRAND STORY ===== */
+        .brand-story {
+            background: var(--bg-white);
+            padding: 10rem 2rem;
+        }
+
+        .brand-story-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .brand-story-text {
+            font-family: 'Noto Serif SC', serif;
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
+            font-weight: 300;
+            line-height: 2.2;
+            color: var(--text-secondary);
+            letter-spacing: 0.08em;
+        }
+
+        .brand-story-text-en {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1rem, 2vw, 1.15rem);
+            font-weight: 300;
+            font-style: italic;
+            line-height: 2;
+            color: var(--text-muted);
+            margin-top: 2rem;
+            letter-spacing: 0.02em;
+        }
+
+        /* ===== PHILOSOPHY ===== */
+        .philosophy {
+            background: var(--bg-cream);
+            padding: 10rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .philosophy-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .philosophy-quote {
+            font-family: 'Noto Serif SC', serif;
+            font-size: clamp(1.8rem, 5vw, 3rem);
+            font-weight: 400;
+            letter-spacing: 0.2em;
+            line-height: 1.8;
+            color: var(--text-primary);
+        }
+
+        .philosophy-quote-en {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.1rem, 3vw, 1.6rem);
+            font-weight: 300;
+            font-style: italic;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            margin-top: 1.5rem;
+        }
+
+        .philosophy-deco {
+            position: absolute;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 25rem;
+            font-weight: 300;
+            color: rgba(196, 168, 130, 0.04);
+            line-height: 1;
+            user-select: none;
+            pointer-events: none;
+        }
+
+        .philosophy-deco.left {
+            top: -5rem;
+            left: -5rem;
+        }
+
+        .philosophy-deco.right {
+            bottom: -8rem;
+            right: -3rem;
+        }
+
+        /* ===== SEVEN CHAKRAS ===== */
+        .chakras {
+            background: var(--bg-white);
+            padding: 10rem 2rem;
+        }
+
+        .chakras-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .chakras-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .chakra-card {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: var(--bg-cream);
+            border: 1px solid var(--border-light);
+            transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chakra-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--chakra-color);
+            opacity: 0.6;
+            transition: opacity var(--transition-fast);
+        }
+
+        .chakra-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.06);
+        }
+
+        .chakra-card:hover::before {
+            opacity: 1;
+        }
+
+        .chakra-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.3em;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .chakra-name {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.3rem;
+            font-weight: 400;
+            letter-spacing: 0.15em;
+            margin-bottom: 0.3rem;
+        }
+
+        .chakra-name-en {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.95rem;
+            font-weight: 300;
+            font-style: italic;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .chakra-scent {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.1em;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .chakra-scent-en {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.8rem;
+            font-style: italic;
+            color: var(--text-muted);
+            margin-top: 0.3rem;
+        }
+
+        /* Chakra colors */
+        .chakra-1 { --chakra-color: #C75B39; }
+        .chakra-2 { --chakra-color: #D4894A; }
+        .chakra-3 { --chakra-color: #C9A84C; }
+        .chakra-4 { --chakra-color: #6B9B6E; }
+        .chakra-5 { --chakra-color: #5A8AA8; }
+        .chakra-6 { --chakra-color: #6B5B8C; }
+        .chakra-7 { --chakra-color: #9B7BB0; }
+
+        /* ===== CRAFTSMANSHIP ===== */
+        .craft {
+            background: var(--bg-cream);
+            padding: 10rem 2rem;
+        }
+
+        .craft-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .craft-image {
+            position: relative;
+        }
+
+        .craft-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: sepia(8%) saturate(92%);
+        }
+
+        .craft-image::after {
+            content: '';
+            position: absolute;
+            inset: 1.5rem;
+            border: 1px solid var(--accent-gold);
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        .craft-text h3 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+            letter-spacing: 0.15em;
+            margin-bottom: 0.5rem;
+        }
+
+        .craft-text .subtitle-en {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            font-weight: 300;
+            font-style: italic;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            letter-spacing: 0.05em;
+        }
+
+        .craft-text p {
+            font-size: 0.95rem;
+            line-height: 2.2;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.05em;
+        }
+
+        .craft-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ===== GALLERY ===== */
+        .gallery {
+            background: var(--bg-white);
+            padding: 10rem 2rem;
+        }
+
+        .gallery-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            background: var(--bg-cream);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 1.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+            filter: sepia(5%) saturate(95%);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.03);
+        }
+
+        .gallery-item.tall {
+            grid-row: span 2;
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 3rem 2rem 2rem;
+            background: linear-gradient(to top, rgba(44,44,44,0.5), transparent);
+            color: var(--bg-white);
+        }
+
+        .gallery-caption span {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 0.85rem;
+            letter-spacing: 0.15em;
+        }
+
+        /* ===== CONNECT ===== */
+        .connect {
+            background: var(--bg-cream);
+            padding: 10rem 2rem;
+            text-align: center;
+        }
+
+        .connect-inner {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .connect-text {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.1rem;
+            font-weight: 300;
+            line-height: 2;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            letter-spacing: 0.08em;
+        }
+
+        .connect-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1rem 3rem;
+            background: var(--text-primary);
+            color: var(--bg-cream);
+            text-decoration: none;
+            font-family: 'Noto Sans SC', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 400;
+            letter-spacing: 0.15em;
+            border: 1px solid var(--text-primary);
+            transition: all var(--transition-fast);
+            cursor: pointer;
+        }
+
+        .connect-btn:hover {
+            background: transparent;
+            color: var(--text-primary);
+        }
+
+        .connect-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .connect-note {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 1.5rem;
+            letter-spacing: 0.1em;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--text-primary);
+            color: var(--text-muted);
+            padding: 4rem 2rem 3rem;
+            text-align: center;
+        }
+
+        .footer-brand {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 300;
+            letter-spacing: 0.2em;
+            color: var(--bg-cream);
+            margin-bottom: 1rem;
+        }
+
+        .footer-slogan {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 0.8rem;
+            font-weight: 300;
+            letter-spacing: 0.3em;
+            color: rgba(247, 243, 236, 0.5);
+            margin-bottom: 2rem;
+        }
+
+        .footer-line {
+            width: 30px;
+            height: 1px;
+            background: var(--accent-gold);
+            margin: 0 auto 2rem;
+            opacity: 0.5;
+        }
+
+        .footer-copy {
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            color: rgba(247, 243, 236, 0.3);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1.5rem 1.5rem;
+            }
+
+            nav.scrolled {
+                padding: 1rem 1.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            section {
+                padding: 6rem 1.5rem;
+            }
+
+            .craft-inner {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-item.tall {
+                grid-row: span 1;
+            }
+
+            .chakras-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .philosophy-deco {
+                font-size: 15rem;
+            }
+        }
+
+        /* ===== REDUCED MOTION ===== */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Loading Screen -->
+    <div id="loading">
+        <div class="loading-content">
+            <svg width="60" height="60" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom: 20px;">
+                <line x1="42" y1="78" x2="38" y2="42" stroke="#2C2C2C" stroke-width="3" stroke-linecap="round" opacity="0.85"/>
+                <line x1="60" y1="78" x2="60" y2="34" stroke="#2C2C2C" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+                <line x1="78" y1="78" x2="82" y2="50" stroke="#2C2C2C" stroke-width="3" stroke-linecap="round" opacity="0.35"/>
+                <rect x="44" y="78" width="32" height="12" rx="6" fill="#C4A882"/>
+                <circle cx="60" cy="76" r="3" fill="#C4A882"/>
+            </svg>
+            <div class="loading-brand">InIce</div>
+            <div class="loading-line"></div>
+            <div class="loading-sub">世界本喧 · 此处冰点</div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <a href="#" class="nav-brand">
+            <svg class="nav-logo" width="28" height="28" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="42" y1="78" x2="38" y2="42" stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity="0.85"/>
+                <line x1="60" y1="78" x2="60" y2="34" stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+                <line x1="78" y1="78" x2="82" y2="50" stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity="0.35"/>
+                <rect x="44" y="78" width="32" height="12" rx="6" fill="#C4A882"/>
+                <circle cx="60" cy="76" r="3" fill="#C4A882"/>
+            </svg>
+            InIce
+        </a>
+        <ul class="nav-links">
+            <li><a href="#story">品牌故事</a></li>
+            <li><a href="#chakras">七脉轮</a></li>
+            <li><a href="#craft">工艺</a></li>
+            <li><a href="#connect">联络</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <h1 class="hero-brand reveal">InIce</h1>
+            <div class="hero-line reveal reveal-delay-1"></div>
+            <p class="hero-slogan reveal reveal-delay-2">世界本喧，此处冰点</p>
+            <p class="hero-slogan-en reveal reveal-delay-3">Where noise dissolves into stillness</p>
+        </div>
+        <div class="scroll-hint">
+            <span>SCROLL</span>
+            <div class="arrow"></div>
+        </div>
+    </section>
+
+    <!-- Brand Story -->
+    <section class="brand-story" id="story">
+        <div class="brand-story-inner">
+            <div class="section-header">
+                <p class="section-label reveal">Brand Story</p>
+                <h2 class="section-title reveal reveal-delay-1">关于 InIce</h2>
+                <p class="section-title-en reveal reveal-delay-2">About InIce</p>
+                <div class="divider reveal reveal-delay-2"></div>
+            </div>
+            <p class="brand-story-text reveal reveal-delay-3">
+                InIce，以喜马拉雅山麓的古老草本智慧为根基，将七脉轮的能量疗愈融入每一支线香。我们相信，香气是通往内在的桥梁——当一缕烟升起，外界的喧嚣便如潮水般退去，只剩下此刻的宁静与觉知。
+            </p>
+            <p class="brand-story-text-en reveal reveal-delay-4">
+                Rooted in the ancient herbal wisdom of the Himalayan foothills, InIce weaves the energy healing of the seven chakras into every incense stick. We believe fragrance is a bridge to the inner self — as the smoke rises, the noise of the world recedes like a tide, leaving only presence and stillness.
+            </p>
+        </div>
+    </section>
+
+    <!-- Philosophy -->
+    <section class="philosophy" id="philosophy">
+        <div class="philosophy-deco left">I</div>
+        <div class="philosophy-deco right">I</div>
+        <div class="philosophy-inner">
+            <p class="philosophy-quote reveal">
+                世界本喧<br>此处冰点
+            </p>
+            <p class="philosophy-quote-en reveal reveal-delay-1">
+                The world is loud.<br>Here, it freezes into silence.
+            </p>
+        </div>
+    </section>
+
+    <!-- Seven Chakras -->
+    <section class="chakras" id="chakras">
+        <div class="chakras-inner">
+            <div class="section-header">
+                <p class="section-label reveal">Seven Chakras Collection</p>
+                <h2 class="section-title reveal reveal-delay-1">七脉轮草本线香</h2>
+                <p class="section-title-en reveal reveal-delay-2">Seven Chakras Herbal Incense</p>
+                <div class="divider reveal reveal-delay-2"></div>
+            </div>
+            <div class="chakras-grid">
+                <div class="chakra-card chakra-1 reveal">
+                    <p class="chakra-number">01</p>
+                    <h3 class="chakra-name">海底轮</h3>
+                    <p class="chakra-name-en">Muladhara</p>
+                    <p class="chakra-scent">没药 · Myrrh</p>
+                    <p class="chakra-scent-en">Grounding · Security</p>
+                </div>
+                <div class="chakra-card chakra-2 reveal reveal-delay-1">
+                    <p class="chakra-number">02</p>
+                    <h3 class="chakra-name">生殖轮</h3>
+                    <p class="chakra-name-en">Svadhisthana</p>
+                    <p class="chakra-scent">黄兰 · Nag Champa</p>
+                    <p class="chakra-scent-en">Creativity · Flow</p>
+                </div>
+                <div class="chakra-card chakra-3 reveal reveal-delay-2">
+                    <p class="chakra-number">03</p>
+                    <h3 class="chakra-name">脐轮</h3>
+                    <p class="chakra-name-en">Manipura</p>
+                    <p class="chakra-scent">杜松 · Devdar</p>
+                    <p class="chakra-scent-en">Willpower · Confidence</p>
+                </div>
+                <div class="chakra-card chakra-4 reveal">
+                    <p class="chakra-number">04</p>
+                    <h3 class="chakra-name">心轮</h3>
+                    <p class="chakra-name-en">Anahata</p>
+                    <p class="chakra-scent">檀香 · Sandalwood</p>
+                    <p class="chakra-scent-en">Love · Compassion</p>
+                </div>
+                <div class="chakra-card chakra-5 reveal reveal-delay-1">
+                    <p class="chakra-number">05</p>
+                    <h3 class="chakra-name">喉轮</h3>
+                    <p class="chakra-name-en">Vishuddha</p>
+                    <p class="chakra-scent">雪松 · Himalayan Cedar</p>
+                    <p class="chakra-scent-en">Expression · Truth</p>
+                </div>
+                <div class="chakra-card chakra-6 reveal reveal-delay-2">
+                    <p class="chakra-number">06</p>
+                    <h3 class="chakra-name">眉心轮</h3>
+                    <p class="chakra-name-en">Ajna</p>
+                    <p class="chakra-scent">苏甘达 · Austha Suganda</p>
+                    <p class="chakra-scent-en">Intuition · Insight</p>
+                </div>
+                <div class="chakra-card chakra-7 reveal">
+                    <p class="chakra-number">07</p>
+                    <h3 class="chakra-name">顶轮</h3>
+                    <p class="chakra-name-en">Sahasrara</p>
+                    <p class="chakra-scent">乳香 · Frankincense</p>
+                    <p class="chakra-scent-en">Spirit · Unity</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Craftsmanship -->
+    <section class="craft" id="craft">
+        <div class="craft-inner">
+            <div class="craft-image reveal">
+                <img src="product-1.jpg" alt="InIce 手工线香">
+            </div>
+            <div class="craft-text">
+                <h3 class="reveal">手工制香</h3>
+                <p class="subtitle-en reveal reveal-delay-1">Handcrafted with Intention</p>
+                <p class="reveal reveal-delay-2">
+                    每一支线香皆源自尼泊尔加德满都谷地的传统手工坊。选用喜马拉雅山区野生草本与天然树脂，依循千年阿育吠陀配方，以手工揉制、自然风干，保留草本纤维的原始肌理。
+                </p>
+                <p class="reveal reveal-delay-3">
+                    Each stick is born in a traditional workshop in Nepal's Kathmandu Valley. Wild Himalayan herbs and natural resins are blended according to ancient Ayurvedic recipes, hand-rolled and sun-dried to preserve the raw texture of the fibers.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="gallery" id="gallery">
+        <div class="gallery-inner">
+            <div class="section-header">
+                <p class="section-label reveal">Gallery</p>
+                <h2 class="section-title reveal reveal-delay-1">产品展示</h2>
+                <p class="section-title-en reveal reveal-delay-2">Product Gallery</p>
+                <div class="divider reveal reveal-delay-2"></div>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item tall reveal">
+                    <img src="product-1.jpg" alt="InIce 线香系列">
+                    <div class="gallery-caption">
+                        <span>十款草本香型</span>
+                    </div>
+                </div>
+                <div class="gallery-item reveal reveal-delay-1">
+                    <img src="product-2.jpg" alt="InIce 手工线香细节">
+                </div>
+                <div class="gallery-item reveal reveal-delay-2">
+                    <img src="product-2.jpg" alt="InIce 包装细节">
+                    <div class="gallery-caption">
+                        <span>手工纤维肌理</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Connect -->
+    <section class="connect" id="connect">
+        <div class="connect-inner">
+            <div class="section-header">
+                <p class="section-label reveal">Connect</p>
+                <h2 class="section-title reveal reveal-delay-1">联络我们</h2>
+                <p class="section-title-en reveal reveal-delay-2">Get in Touch</p>
+                <div class="divider reveal reveal-delay-2"></div>
+            </div>
+            <p class="connect-text reveal reveal-delay-3">
+                如需了解更多产品信息，或有意合作，欢迎通过小红书与我们取得联系。
+            </p>
+            <a href="https://www.xiaohongshu.com/user/profile/26537117029" target="_blank" class="connect-btn reveal reveal-delay-4">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                </svg>
+                前往小红书
+            </a>
+            <p class="connect-note reveal reveal-delay-4">小红书号：26537117029</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <svg width="40" height="40" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom: 16px;">
+            <line x1="42" y1="78" x2="38" y2="42" stroke="#2C2C2C" stroke-width="3" stroke-linecap="round" opacity="0.85"/>
+            <line x1="60" y1="78" x2="60" y2="34" stroke="#2C2C2C" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+            <line x1="78" y1="78" x2="82" y2="50" stroke="#2C2C2C" stroke-width="3" stroke-linecap="round" opacity="0.35"/>
+            <rect x="44" y="78" width="32" height="12" rx="6" fill="#C4A882"/>
+            <circle cx="60" cy="76" r="3" fill="#C4A882"/>
+        </svg>
+        <p class="footer-brand">InIce</p>
+        <p class="footer-slogan">世界本喧，此处冰点</p>
+        <div class="footer-line"></div>
+        <p class="footer-copy">© 2025 InIce. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Loading screen
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loading').classList.add('hidden');
+            }, 2000);
+        });
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll reveal
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
