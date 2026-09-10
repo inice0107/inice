@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: #E8E4DE;
+  font-family: "Noto Serif SC", "PingFang SC", serif;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+}
+
+/* ===== 小红书方形图 1 - 品牌主视觉 ===== */
+.poster-1 {
+  width: 540px;
+  height: 540px;
+  background: #F7F3EC;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.poster-1 .deco-line {
+  position: absolute;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 60px;
+  background: #C4A882;
+}
+
+.poster-1 .brand-name {
+  font-size: 56px;
+  font-weight: 300;
+  letter-spacing: 12px;
+  color: #2C2C2C;
+  margin-top: 40px;
+  font-family: "Cormorant Garamond", serif;
+}
+
+.poster-1 .slogan-zh {
+  font-size: 18px;
+  color: #5A5A5A;
+  letter-spacing: 6px;
+  margin-top: 24px;
+  font-weight: 400;
+}
+
+.poster-1 .slogan-en {
+  font-size: 13px;
+  color: #999;
+  letter-spacing: 2px;
+  margin-top: 12px;
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+}
+
+.poster-1 .deco-bottom {
+  position: absolute;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 40px;
+  background: #C4A882;
+}
+
+.poster-1 .category {
+  position: absolute;
+  bottom: 60px;
+  font-size: 11px;
+  color: #C4A882;
+  letter-spacing: 4px;
+}
+
+/* ===== 小红书方形图 2 - 七脉轮系列 ===== */
+.poster-2 {
+  width: 540px;
+  height: 540px;
+  background: #FDFCFA;
+  position: relative;
+  overflow: hidden;
+}
+
+.poster-2 .header {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+}
+
+.poster-2 .header h2 {
+  font-size: 22px;
+  color: #2C2C2C;
+  letter-spacing: 4px;
+  font-weight: 500;
+}
+
+.poster-2 .header .sub {
+  font-size: 12px;
+  color: #999;
+  margin-top: 6px;
+  letter-spacing: 2px;
+  font-family: "Cormorant Garamond", serif;
+}
+
+.poster-2 .chakra-list {
+  position: absolute;
+  top: 130px;
+  left: 50px;
+  right: 50px;
+}
+
+.poster-2 .chakra-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.poster-2 .chakra-color {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  margin-right: 16px;
+}
+
+.poster-2 .chakra-name {
+  font-size: 14px;
+  color: #2C2C2C;
+  letter-spacing: 2px;
+  flex: 1;
+}
+
+.poster-2 .chakra-scent {
+  font-size: 11px;
+  color: #999;
+  letter-spacing: 1px;
+  font-family: "Cormorant Garamond", serif;
+}
+
+.poster-2 .footer-text {
+  position: absolute;
+  bottom: 50px;
+  left: 50px;
+  font-size: 11px;
+  color: #C4A882;
+  letter-spacing: 3px;
+}
+
+/* ===== 朋友圈竖版图 - 单品详情 ===== */
+.poster-3 {
+  width: 360px;
+  height: 640px;
+  background: #F7F3EC;
+  position: relative;
+  overflow: hidden;
+}
+
+.poster-3 .top-line {
+  position: absolute;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 40px;
+  background: #C4A882;
+}
+
+.poster-3 .product-name {
+  position: absolute;
+  top: 120px;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.poster-3 .product-name h1 {
+  font-size: 28px;
+  color: #2C2C2C;
+  letter-spacing: 6px;
+  font-weight: 500;
+}
+
+.poster-3 .product-name .en {
+  font-size: 14px;
+  color: #999;
+  margin-top: 8px;
+  letter-spacing: 2px;
+  font-family: "Cormorant Garamond", serif;
+}
+
+.poster-3 .divider {
+  position: absolute;
+  top: 210px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 1px;
+  background: #C4A882;
+}
+
+.poster-3 .desc {
+  position: absolute;
+  top: 240px;
+  left: 50px;
+  right: 50px;
+  text-align: center;
+}
+
+.poster-3 .desc p {
+  font-size: 14px;
+  color: #5A5A5A;
+  line-height: 2;
+  letter-spacing: 1px;
+}
+
+.poster-3 .scent-note {
+  position: absolute;
+  top: 380px;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.poster-3 .scent-note .label {
+  font-size: 11px;
+  color: #C4A882;
+  letter-spacing: 3px;
+  margin-bottom: 12px;
+}
+
+.poster-3 .scent-note .notes {
+  font-size: 13px;
+  color: #2C2C2C;
+  letter-spacing: 2px;
+}
+
+.poster-3 .bottom-brand {
+  position: absolute;
+  bottom: 60px;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.poster-3 .bottom-brand .logo {
+  font-size: 20px;
+  letter-spacing: 6px;
+  color: #2C2C2C;
+  font-family: "Cormorant Garamond", serif;
+}
+
+.poster-3 .bottom-brand .tagline {
+  font-size: 10px;
+  color: #999;
+  margin-top: 6px;
+  letter-spacing: 2px;
+}
+
+/* ===== 横幅图 - 品牌主视觉 ===== */
+.poster-4 {
+  width: 720px;
+  height: 360px;
+  background: #FDFCFA;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.poster-4 .content {
+  text-align: center;
+}
+
+.poster-4 .content .brand {
+  font-size: 42px;
+  letter-spacing: 10px;
+  color: #2C2C2C;
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 300;
+}
+
+.poster-4 .content .line {
+  width: 40px;
+  height: 1px;
+  background: #C4A882;
+  margin: 20px auto;
+}
+
+.poster-4 .content .slogan {
+  font-size: 16px;
+  color: #5A5A5A;
+  letter-spacing: 4px;
+}
+
+.poster-4 .content .slogan-en {
+  font-size: 12px;
+  color: #999;
+  margin-top: 8px;
+  letter-spacing: 2px;
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+}
+
+.poster-4 .side-deco {
+  position: absolute;
+  right: 60px;
+  top: 50%;
+  transform: translateY(-50%);
+  writing-mode: vertical-rl;
+  font-size: 11px;
+  color: #C4A882;
+  letter-spacing: 4px;
+}
+</style>
+</head>
+<body>
+
+<!-- 小红书方形图 1: 品牌主视觉 -->
+<div class="poster-1">
+  <div class="deco-line"></div>
+  <div class="brand-name">InIce</div>
+  <div class="slogan-zh">世界本喧，此处冰点</div>
+  <div class="slogan-en">where noise dissolves into stillness</div>
+  <div class="deco-bottom"></div>
+  <div class="category">尼泊尔手工线香</div>
+</div>
+
+<!-- 小红书方形图 2: 七脉轮系列 -->
+<div class="poster-2">
+  <div class="header">
+    <h2>七脉轮系列</h2>
+    <div class="sub">SEVEN CHAKRAS COLLECTION</div>
+  </div>
+  <div class="chakra-list">
+    <div class="chakra-item">
+      <div class="chakra-color" style="background: #DC143C;"></div>
+      <div class="chakra-name">海底轮</div>
+      <div class="chakra-scent">Myrrh / 没药</div>
+    </div>
+    <div class="chakra-item">
+      <div class="chakra-color" style="background: #FF8C00;"></div>
+      <div class="chakra-name">生殖轮</div>
+      <div class="chakra-scent">Nag Champa / 黄兰</div>
+    </div>
+    <div class="chakra-item">
+      <div class="chakra-color" style="background: #FFD700;"></div>
+      <div class="chakra-name">脐轮</div>
+      <div class="chakra-scent">Devdar / 杜松</div>
+    </div>
+    <div class="chakra-item">
+      <div class="chakra-color" style="background: #32CD32;"></div>
+      <div class="chakra-name">心轮</div>
+      <div class="chakra-scent">Sandalwood / 檀香</div>
+    </div>
+    <div class="chakra-item">
+      <div class="chakra-color" style="background: #00CED1;"></div>
+      <div class="chakra-name">喉轮</div>
+      <div class="chakra-scent">Himalayan Cedar / 雪松</div>
+    </div>
+    <div class="chakra-item">
+      <div class="chakra-color" style="background: #4169E1;"></div>
+      <div class="chakra-name">眉心轮</div>
+      <div class="chakra-scent">Austha Suganda / 苏甘达</div>
+    </div>
+    <div class="chakra-item">
+      <div class="chakra-color" style="background: #9932CC;"></div>
+      <div class="chakra-name">顶轮</div>
+      <div class="chakra-scent">Frankincense / 乳香</div>
+    </div>
+  </div>
+  <div class="footer-text">手工制作 · 天然草本</div>
+</div>
+
+<!-- 朋友圈竖版图: 单品介绍（以檀香/心轮为例） -->
+<div class="poster-3">
+  <div class="top-line"></div>
+  <div class="product-name">
+    <h1>心轮</h1>
+    <div class="en">SANDALWOOD · 檀香</div>
+  </div>
+  <div class="divider"></div>
+  <div class="desc">
+    <p>奶香与木质交织</p>
+    <p>沉稳而温柔</p>
+    <p>仿佛走入古老的寺庙</p>
+    <p>心，渐渐沉静</p>
+  </div>
+  <div class="scent-note">
+    <div class="label">香 调</div>
+    <div class="notes">前调：乳香 · 中调：檀香 · 尾调：琥珀</div>
+  </div>
+  <div class="bottom-brand">
+    <div class="logo">InIce</div>
+    <div class="tagline">世界本喧，此处冰点</div>
+  </div>
+</div>
+
+<!-- 横幅图: 品牌主视觉 -->
+<div class="poster-4">
+  <div class="content">
+    <div class="brand">InIce</div>
+    <div class="line"></div>
+    <div class="slogan">世界本喧，此处冰点</div>
+    <div class="slogan-en">where noise dissolves into stillness</div>
+  </div>
+  <div class="side-deco">尼泊尔手工线香</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>联络 — InIce</title>
+  <meta name="description" content="联系 InIce，通过小红书或留言与我们取得联系">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;600;700&family=Noto+Sans+SC:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .page-header {
+      min-height: 50vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8rem 2rem 4rem;
+      background: var(--bg-cream);
+    }
+    .page-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      color: var(--text-primary);
+    }
+    .page-header p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--text-muted);
+      margin-top: 1rem;
+      letter-spacing: 0.05em;
+    }
+
+    .contact-section {
+      background: var(--bg-white);
+      padding: 6rem 2rem 8rem;
+    }
+    .contact-inner {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      margin-top: 4rem;
+    }
+
+    /* Form */
+    .contact-form h3 {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      margin-bottom: 2rem;
+    }
+    .form-group {
+      margin-bottom: 1.8rem;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 1rem 0;
+      background: none;
+      border: none;
+      border-bottom: 1px solid var(--border-light);
+      font-family: 'Noto Sans SC', sans-serif;
+      font-size: 0.95rem;
+      color: var(--text-primary);
+      outline: none;
+      transition: border-color 0.3s;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-bottom-color: var(--accent-gold);
+    }
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+    .form-submit {
+      padding: 1rem 3rem;
+      background: var(--text-primary);
+      color: var(--bg-cream);
+      border: 1px solid var(--text-primary);
+      font-family: 'Noto Sans SC', sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+    .form-submit:hover {
+      background: transparent;
+      color: var(--text-primary);
+    }
+
+    /* Contact Info */
+    .contact-info h3 {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      margin-bottom: 2rem;
+    }
+    .contact-info-item {
+      margin-bottom: 2rem;
+    }
+    .contact-info-item p {
+      font-size: 0.9rem;
+      line-height: 1.8;
+      color: var(--text-secondary);
+    }
+    .contact-info-item .label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+      margin-bottom: 0.5rem;
+    }
+
+    /* Xiaohongshu CTA */
+    .xhs-card {
+      background: var(--bg-cream);
+      border: 1px solid var(--border-light);
+      padding: 2.5rem;
+      text-align: center;
+      margin-top: 3rem;
+    }
+    .xhs-card p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+    }
+    .xhs-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 1rem 2.5rem;
+      background: #FF2442;
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      border-radius: 4px;
+      transition: opacity 0.3s;
+    }
+    .xhs-btn:hover { opacity: 0.9; }
+    .xhs-btn svg { width: 18px; height: 18px; }
+
+    /* Form success message */
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 3rem;
+      background: var(--bg-cream);
+      border: 1px solid var(--border-light);
+    }
+    .form-success.visible { display: block; }
+    .form-success h3 {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+    }
+    .form-success p {
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+
+    @media (max-width: 768px) {
+      .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-transition"></div>
+
+  <div id="loading">
+    <div class="loading-content">
+      <div class="loading-brand">In<span style="font-style:italic">I</span>ce</div>
+      <div class="loading-line"></div>
+      <div class="loading-sub">世界本喧 · 此处冰点</div>
+    </div>
+  </div>
+
+  <nav id="navbar">
+    <a href="./index.html" class="nav-brand">In<span style="font-style:italic">I</span>ce</a>
+    <ul class="nav-links">
+      <li><a href="./index.html">首页</a></li>
+      <li><a href="./products.html">产品</a></li>
+      <li><a href="./about.html">关于</a></li>
+      <li><a href="./contact.html">联络</a></li>
+    </ul>
+    <button class="mobile-menu-btn" aria-label="菜单">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-menu">
+    <a href="./index.html">首页</a>
+    <a href="./products.html">产品</a>
+    <a href="./about.html">关于</a>
+    <a href="./contact.html">联络</a>
+  </div>
+
+  <section class="page-header">
+    <h1 class="reveal">联络我们</h1>
+    <p class="reveal reveal-delay-1">Get in Touch</p>
+  </section>
+
+  <section class="contact-section">
+    <div class="contact-inner">
+      <div class="section-header">
+        <p class="section-label reveal">Contact</p>
+        <h2 class="section-title reveal reveal-delay-1">与我们联系</h2>
+        <p class="section-title-en reveal reveal-delay-2">We'd love to hear from you</p>
+        <div class="divider reveal reveal-delay-2"></div>
+      </div>
+
+      <div class="contact-grid">
+        <!-- Form -->
+        <div class="contact-form reveal reveal-delay-3">
+          <h3>留言</h3>
+          <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+            <div class="form-group">
+              <label for="name">姓名 / Name</label>
+              <input type="text" id="name" name="name" required placeholder="您的称呼">
+            </div>
+            <div class="form-group">
+              <label for="email">邮箱 / Email</label>
+              <input type="email" id="email" name="email" required placeholder="your@email.com">
+            </div>
+            <div class="form-group">
+              <label for="message">留言 / Message</label>
+              <textarea id="message" name="message" required placeholder="想对我们说什么..."></textarea>
+            </div>
+            <button type="submit" class="form-submit">发送留言</button>
+          </form>
+          <div class="form-success" id="formSuccess">
+            <h3>感谢您的留言</h3>
+            <p>我们会尽快回复您。如需更快的回应，欢迎通过小红书与我们联系。</p>
+          </div>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="contact-info reveal reveal-delay-4">
+          <h3>联系方式</h3>
+          <div class="contact-info-item">
+            <p class="label">Social</p>
+            <p>小红书：@InIce<br>账号：26537117029</p>
+          </div>
+          <div class="contact-info-item">
+            <p class="label">Location</p>
+            <p>源于喜马拉雅<br>手工制于尼泊尔加德满都谷地</p>
+          </div>
+
+          <div class="xhs-card">
+            <p>关注我们的小红书账号，获取最新产品动态与品牌故事。</p>
+            <a href="https://www.xiaohongshu.com/user/profile/26537117029" target="_blank" class="xhs-btn">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+              前往小红书主页
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p class="footer-brand">In<span style="font-style:italic">I</span>ce</p>
+    <p class="footer-slogan">世界本喧，此处冰点</p>
+    <div class="footer-line"></div>
+    <div class="footer-links">
+      <a href="./index.html">首页</a>
+      <a href="./products.html">产品</a>
+      <a href="./about.html">关于</a>
+      <a href="./contact.html">联络</a>
+    </div>
+    <p class="footer-copy">© 2025 InIce. All rights reserved.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    // Form handling
+    const form = document.getElementById('contactForm');
+    const success = document.getElementById('formSuccess');
+
+    form.addEventListener('submit', (e) => {
+      // If no Formspree ID is set, show a local message
+      const action = form.getAttribute('action');
+      if (action.includes('YOUR_FORM_ID')) {
+        e.preventDefault();
+        form.style.display = 'none';
+        success.classList.add('visible');
+      }
+      // Otherwise let Formspree handle it
+    });
+  </script>
+</body>
+</html>

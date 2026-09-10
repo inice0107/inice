@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500&family=Cormorant+Garamond:wght@300;400;500&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body { font-family: 'Noto Serif SC', serif; }
+
+/* ===== SVG ICON ===== */
+.inice-icon {
+  display: inline-block;
+}
+.inice-icon svg {
+  display: block;
+}
+
+/* ===== 1. 主 LOGO 横版 ===== */
+.logo-horizontal {
+  width: 500px;
+  height: 200px;
+  background: #F5F0E8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.logo-horizontal .text-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.logo-horizontal .brand-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 48px;
+  font-weight: 400;
+  color: #3A3020;
+  letter-spacing: 4px;
+  line-height: 1;
+}
+.logo-horizontal .slogan {
+  font-size: 13px;
+  color: #9A8A70;
+  letter-spacing: 3px;
+  margin-top: 6px;
+}
+
+/* ===== 2. 图标版 ===== */
+.logo-icon {
+  width: 200px;
+  height: 200px;
+  background: #FFFEFB;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(196,168,130,0.15);
+}
+
+/* ===== 3. 竖版 ===== */
+.logo-vertical {
+  width: 300px;
+  height: 300px;
+  background: #FFFEFB;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  border: 1px solid rgba(196,168,130,0.15);
+}
+.logo-vertical .brand-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px;
+  font-weight: 400;
+  color: #3A3020;
+  letter-spacing: 4px;
+}
+.logo-vertical .slogan {
+  font-size: 11px;
+  color: #9A8A70;
+  letter-spacing: 2px;
+}
+
+/* ===== 4. 反白版 ===== */
+.logo-inverse {
+  width: 500px;
+  height: 200px;
+  background: #2A2A2A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.logo-inverse .brand-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 48px;
+  font-weight: 400;
+  color: #F5F0E8;
+  letter-spacing: 4px;
+  line-height: 1;
+}
+.logo-inverse .slogan {
+  font-size: 13px;
+  color: #B0A090;
+  letter-spacing: 3px;
+  margin-top: 6px;
+}
+
+/* ===== 5. 线条版 ===== */
+.logo-line {
+  width: 500px;
+  height: 120px;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.logo-line .brand-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 48px;
+  font-weight: 400;
+  color: #3A3020;
+  letter-spacing: 4px;
+  line-height: 1;
+}
+.logo-line .slogan {
+  font-size: 13px;
+  color: #9A8A70;
+  letter-spacing: 3px;
+  margin-top: 6px;
+}
+
+/* ===== 6. 小红点头像 ===== */
+.logo-avatar {
+  width: 100px;
+  height: 100px;
+  background: #FFFEFB;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid rgba(196,168,130,0.15);
+}
+
+/* ===== 7. 卡片水印 ===== */
+.logo-watermark {
+  width: 300px;
+  height: 160px;
+  background: #FFFEFB;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid rgba(196,168,130,0.15);
+}
+.logo-watermark .brand-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: #3A3020;
+  letter-spacing: 3px;
+}
+.logo-watermark .sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 9px;
+  color: #B0A090;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+/* ===== 容器间距 ===== */
+.item {
+  margin: 30px;
+}
+</style>
+</head>
+<body>
+
+<!-- SVG 定义 -->
+<svg style="display:none">
+  <defs>
+    <!-- 主图标：三根香插在香座上 -->
+    <g id="inice-logo">
+      <!-- 香座：扁平椭圆形容器 -->
+      <ellipse cx="30" cy="52" rx="26" ry="8" fill="#C4A882" opacity="0.85"/>
+      <ellipse cx="30" cy="50" rx="24" ry="6" fill="#D4B892" opacity="0.6"/>
+      <!-- 香灰/底座细节 -->
+      <ellipse cx="30" cy="51" rx="20" ry="4" fill="#E8D8C0" opacity="0.5"/>
+      <!-- 三根线香 -->
+      <line x1="22" y1="48" x2="18" y2="12" stroke="#5A4A35" stroke-width="1.8" stroke-linecap="round"/>
+      <line x1="30" y1="49" x2="30" y2="8" stroke="#5A4A35" stroke-width="1.8" stroke-linecap="round"/>
+      <line x1="38" y1="48" x2="42" y2="14" stroke="#5A4A35" stroke-width="1.8" stroke-linecap="round"/>
+      <!-- 香顶小红点（燃点） -->
+      <circle cx="18" cy="12" r="1.5" fill="#C4A882" opacity="0.6"/>
+      <circle cx="30" cy="8" r="1.5" fill="#C4A882" opacity="0.6"/>
+      <circle cx="42" cy="14" r="1.5" fill="#C4A882" opacity="0.6"/>
+    </g>
+    <!-- 线条版图标 -->
+    <g id="inice-logo-line">
+      <ellipse cx="30" cy="52" rx="26" ry="8" fill="none" stroke="#3A3020" stroke-width="1.2"/>
+      <ellipse cx="30" cy="50" rx="22" ry="5" fill="none" stroke="#3A3020" stroke-width="0.8"/>
+      <line x1="22" y1="48" x2="18" y2="12" stroke="#3A3020" stroke-width="1.2" stroke-linecap="round"/>
+      <line x1="30" y1="49" x2="30" y2="8" stroke="#3A3020" stroke-width="1.2" stroke-linecap="round"/>
+      <line x1="38" y1="48" x2="42" y2="14" stroke="#3A3020" stroke-width="1.2" stroke-linecap="round"/>
+    </g>
+    <!-- 反白版图标 -->
+    <g id="inice-logo-inverse">
+      <ellipse cx="30" cy="52" rx="26" ry="8" fill="#C4A882" opacity="0.7"/>
+      <ellipse cx="30" cy="50" rx="24" ry="6" fill="#D4B892" opacity="0.5"/>
+      <line x1="22" y1="48" x2="18" y2="12" stroke="#F5F0E8" stroke-width="1.8" stroke-linecap="round"/>
+      <line x1="30" y1="49" x2="30" y2="8" stroke="#F5F0E8" stroke-width="1.8" stroke-linecap="round"/>
+      <line x1="38" y1="48" x2="42" y2="14" stroke="#F5F0E8" stroke-width="1.8" stroke-linecap="round"/>
+      <circle cx="18" cy="12" r="1.5" fill="#D4B892" opacity="0.8"/>
+      <circle cx="30" cy="8" r="1.5" fill="#D4B892" opacity="0.8"/>
+      <circle cx="42" cy="14" r="1.5" fill="#D4B892" opacity="0.8"/>
+    </g>
+  </defs>
+</svg>
+
+<!-- 1. 主 LOGO 横版 -->
+<div class="item logo-horizontal" id="logo-h">
+  <svg width="60" height="60" viewBox="0 0 60 60">
+    <use href="#inice-logo"/>
+  </svg>
+  <div class="text-block">
+    <div class="brand-name">InIce</div>
+    <div class="slogan">世界本喧，此处冰点</div>
+  </div>
+</div>
+
+<!-- 2. 图标版 -->
+<div class="item logo-icon" id="logo-icon">
+  <svg width="80" height="80" viewBox="0 0 60 60">
+    <use href="#inice-logo"/>
+  </svg>
+</div>
+
+<!-- 3. 竖版 -->
+<div class="item logo-vertical" id="logo-v">
+  <svg width="70" height="70" viewBox="0 0 60 60">
+    <use href="#inice-logo"/>
+  </svg>
+  <div class="brand-name">InIce</div>
+  <div class="slogan">世界本喧，此处冰点</div>
+</div>
+
+<!-- 4. 反白版 -->
+<div class="item logo-inverse" id="logo-inv">
+  <svg width="60" height="60" viewBox="0 0 60 60">
+    <use href="#inice-logo-inverse"/>
+  </svg>
+  <div class="text-block">
+    <div class="brand-name">InIce</div>
+    <div class="slogan">世界本喧，此处冰点</div>
+  </div>
+</div>
+
+<!-- 5. 线条版 -->
+<div class="item logo-line" id="logo-line">
+  <svg width="60" height="60" viewBox="0 0 60 60">
+    <use href="#inice-logo-line"/>
+  </svg>
+  <div class="text-block">
+    <div class="brand-name">InIce</div>
+    <div class="slogan">世界本喧，此处冰点</div>
+  </div>
+</div>
+
+<!-- 6. 小红点头像 -->
+<div class="item logo-avatar" id="logo-avatar">
+  <svg width="50" height="50" viewBox="0 0 60 60">
+    <use href="#inice-logo"/>
+  </svg>
+</div>
+
+<!-- 7. 卡片水印 -->
+<div class="item logo-watermark" id="logo-wm">
+  <svg width="40" height="40" viewBox="0 0 60 60">
+    <use href="#inice-logo"/>
+  </svg>
+  <div class="brand-name">Inice</div>
+  <div class="sub">Handmade Incense</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body { font-family: 'Noto Serif SC', serif; }
+
+/* ===== 方案B：高对比度衬线（Playfair Display） ===== */
+/* 第一个I正体，第二个I斜体 */
+
+/* 横版 */
+.logo-b-h {
+  width: 500px;
+  height: 200px;
+  background: #F5F0E8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.logo-b-h .brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 54px;
+  font-weight: 400;
+  color: #3A3020;
+  letter-spacing: 4px;
+}
+.logo-b-h .brand .i2 { font-style: italic; }
+.logo-b-h .slogan {
+  font-size: 12px;
+  color: #9A8A70;
+  letter-spacing: 5px;
+  margin-top: 4px;
+}
+
+/* 竖版 */
+.logo-b-v {
+  width: 300px;
+  height: 300px;
+  background: #FFFEFB;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  border: 1px solid rgba(196,168,130,0.12);
+}
+.logo-b-v .brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 42px;
+  font-weight: 400;
+  color: #3A3020;
+  letter-spacing: 3px;
+}
+.logo-b-v .brand .i2 { font-style: italic; }
+.logo-b-v .slogan {
+  font-size: 11px;
+  color: #9A8A70;
+  letter-spacing: 4px;
+}
+
+/* 反白版 */
+.logo-b-inv {
+  width: 500px;
+  height: 200px;
+  background: #2A2A2A;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.logo-b-inv .brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 54px;
+  font-weight: 400;
+  color: #F5F0E8;
+  letter-spacing: 4px;
+}
+.logo-b-inv .brand .i2 { font-style: italic; }
+.logo-b-inv .slogan {
+  font-size: 12px;
+  color: #B0A090;
+  letter-spacing: 5px;
+  margin-top: 4px;
+}
+
+/* 线条版（透明背景） */
+.logo-b-line {
+  width: 500px;
+  height: 120px;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.logo-b-line .brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 54px;
+  font-weight: 400;
+  color: #3A3020;
+  letter-spacing: 4px;
+}
+.logo-b-line .brand .i2 { font-style: italic; }
+.logo-b-line .slogan {
+  font-size: 12px;
+  color: #9A8A70;
+  letter-spacing: 5px;
+}
+
+/* 头像 */
+.logo-b-avatar {
+  width: 100px;
+  height: 100px;
+  background: #FFFEFB;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid rgba(196,168,130,0.15);
+}
+.logo-b-avatar .brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: #3A3020;
+  letter-spacing: 1px;
+}
+.logo-b-avatar .brand .i2 { font-style: italic; }
+
+/* 水印 */
+.logo-b-watermark {
+  width: 280px;
+  height: 120px;
+  background: #FFFEFB;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: 1px solid rgba(196,168,130,0.12);
+}
+.logo-b-watermark .brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: #3A3020;
+  letter-spacing: 2px;
+}
+.logo-b-watermark .brand .i2 { font-style: italic; }
+.logo-b-watermark .sub {
+  font-family: 'Playfair Display', serif;
+  font-size: 8px;
+  color: #B0A090;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+/* 印章 */
+.logo-b-seal {
+  width: 120px;
+  height: 120px;
+  background: #C4A882;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+}
+.logo-b-seal .brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #FFFEFB;
+  letter-spacing: 1px;
+}
+.logo-b-seal .brand .i2 { font-style: italic; }
+
+.item { margin: 30px; }
+</style>
+</head>
+<body>
+
+<!-- 01 横版 -->
+<div class="item logo-b-h" id="logo-b-h">
+  <div class="brand">In<span class="i2">I</span>ce</div>
+  <div class="slogan">世界本喧，此处冰点</div>
+</div>
+
+<!-- 02 竖版 -->
+<div class="item logo-b-v" id="logo-b-v">
+  <div class="brand">In<span class="i2">I</span>ce</div>
+  <div class="slogan">世界本喧，此处冰点</div>
+</div>
+
+<!-- 03 反白版 -->
+<div class="item logo-b-inv" id="logo-b-inv">
+  <div class="brand">In<span class="i2">I</span>ce</div>
+  <div class="slogan">世界本喧，此处冰点</div>
+</div>
+
+<!-- 04 线条版 -->
+<div class="item logo-b-line" id="logo-b-line">
+  <div class="brand">In<span class="i2">I</span>ce</div>
+  <div class="slogan">世界本喧，此处冰点</div>
+</div>
+
+<!-- 05 头像 -->
+<div class="item logo-b-avatar" id="logo-b-avatar">
+  <div class="brand">In<span class="i2">I</span>ce</div>
+</div>
+
+<!-- 06 水印 -->
+<div class="item logo-b-watermark" id="logo-b-watermark">
+  <div class="brand">In<span class="i2">I</span>ce</div>
+  <div class="sub">Handmade Incense</div>
+</div>
+
+<!-- 07 印章 -->
+<div class="item logo-b-seal" id="logo-b-seal">
+  <div class="brand">In<span class="i2">I</span>ce</div>
+</div>
+
+</body>
+</html>

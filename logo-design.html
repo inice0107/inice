@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #F7F3EC;
+  font-family: "Noto Serif SC", "PingFang SC", serif;
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+
+.section-title {
+  font-size: 14px;
+  color: #999;
+  letter-spacing: 4px;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+}
+
+/* ===== 方案一：极简文字标（Wordmark）===== */
+.logo-1 {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+.logo-1-display {
+  font-family: "Cormorant Garamond", "Noto Serif SC", serif;
+  font-size: 72px;
+  font-weight: 300;
+  letter-spacing: 8px;
+  color: #2C2C2C;
+  position: relative;
+}
+/* 在 I 和 n 之间加一条微妙的竖线，象征线香 */
+.logo-1-display::after {
+  content: '';
+  position: absolute;
+  left: 52%;
+  top: 10%;
+  width: 1px;
+  height: 80%;
+  background: #C4A882;
+  opacity: 0.6;
+}
+.logo-1-desc {
+  font-size: 13px;
+  color: #999;
+  line-height: 1.8;
+  max-width: 300px;
+}
+
+/* ===== 方案二：烟雾上升图形 + 文字 ===== */
+.logo-2 {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+.logo-2-icon {
+  width: 80px;
+  height: 80px;
+  position: relative;
+}
+/* 线香烟雾抽象：三条向上飘的曲线 */
+.smoke-line {
+  position: absolute;
+  bottom: 10px;
+  width: 2px;
+  background: #2C2C2C;
+  border-radius: 1px;
+}
+.smoke-line:nth-child(1) {
+  left: 30%;
+  height: 35px;
+  transform: rotate(-8deg);
+  opacity: 0.9;
+}
+.smoke-line:nth-child(2) {
+  left: 50%;
+  height: 50px;
+  transform: rotate(3deg);
+  opacity: 0.6;
+}
+.smoke-line:nth-child(3) {
+  left: 70%;
+  height: 30px;
+  transform: rotate(10deg);
+  opacity: 0.4;
+}
+/* 底部小圆点象征香插 */
+.incense-base {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 8px;
+  background: #C4A882;
+  border-radius: 4px;
+}
+.logo-2-text {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 48px;
+  font-weight: 300;
+  letter-spacing: 6px;
+  color: #2C2C2C;
+}
+.logo-2-desc {
+  font-size: 13px;
+  color: #999;
+  line-height: 1.8;
+  max-width: 300px;
+}
+
+/* ===== 方案三：东方印章风 ===== */
+.logo-3 {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+.logo-3-seal {
+  width: 80px;
+  height: 80px;
+  border: 2px solid #8B0000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+/* 篆刻风格的 冰 字 */
+.logo-3-seal-inner {
+  font-size: 36px;
+  color: #8B0000;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1;
+}
+/* 角落装饰 */
+.logo-3-seal::before {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  width: 8px;
+  height: 8px;
+  border-top: 1px solid #8B0000;
+  border-left: 1px solid #8B0000;
+}
+.logo-3-seal::after {
+  content: '';
+  position: absolute;
+  bottom: 6px;
+  right: 6px;
+  width: 8px;
+  height: 8px;
+  border-bottom: 1px solid #8B0000;
+  border-right: 1px solid #8B0000;
+}
+.logo-3-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.logo-3-en {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 32px;
+  font-weight: 300;
+  letter-spacing: 4px;
+  color: #2C2C2C;
+}
+.logo-3-zh {
+  font-size: 14px;
+  color: #999;
+  letter-spacing: 6px;
+}
+.logo-3-desc {
+  font-size: 13px;
+  color: #999;
+  line-height: 1.8;
+  max-width: 300px;
+}
+
+/* ===== 方案四：冰晶 + 香气融合 ===== */
+.logo-4 {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+.logo-4-icon {
+  width: 80px;
+  height: 80px;
+  position: relative;
+}
+/* 六角冰晶 */
+.ice-hex {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  height: 50px;
+}
+.ice-hex svg {
+  width: 100%;
+  height: 100%;
+}
+/* 烟雾从冰晶中升起 */
+.logo-4-smoke {
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 20px;
+  background: #C4A882;
+  opacity: 0.5;
+  border-radius: 1px;
+}
+.logo-4-text {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 48px;
+  font-weight: 300;
+  letter-spacing: 6px;
+  color: #2C2C2C;
+}
+.logo-4-desc {
+  font-size: 13px;
+  color: #999;
+  line-height: 1.8;
+  max-width: 300px;
+}
+
+/* ===== 应用场景展示 ===== */
+.applications {
+  display: flex;
+  gap: 40px;
+  margin-top: 20px;
+}
+.app-card {
+  width: 200px;
+  height: 120px;
+  background: #FDFCFA;
+  border: 1px solid #E5E0D8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.app-card .app-logo {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 24px;
+  letter-spacing: 4px;
+  color: #2C2C2C;
+}
+.app-card .app-label {
+  font-size: 11px;
+  color: #999;
+  letter-spacing: 2px;
+}
+</style>
+</head>
+<body>
+
+<!-- 方案一：极简文字标 -->
+<div>
+  <div class="section-title">方案一 · 极简文字标 Wordmark</div>
+  <div class="logo-1">
+    <div class="logo-1-display">InIce</div>
+    <div class="logo-1-desc">
+      灵感来自观夏的极简美学<br>
+      字母间以细线分隔，象征线香的挺拔<br>
+      无图形，纯字体即识别<br>
+      适合：网页、包装、印章
+    </div>
+  </div>
+</div>
+
+<!-- 方案二：烟雾图形 + 文字 -->
+<div>
+  <div class="section-title">方案二 · 烟雾图形标</div>
+  <div class="logo-2">
+    <div class="logo-2-icon">
+      <div class="smoke-line"></div>
+      <div class="smoke-line"></div>
+      <div class="smoke-line"></div>
+      <div class="incense-base"></div>
+    </div>
+    <div>
+      <div class="logo-2-text">InIce</div>
+      <div style="font-size: 12px; color: #999; margin-top: 4px; letter-spacing: 2px;">世界本喧，此处冰点</div>
+    </div>
+    <div class="logo-2-desc">
+      抽象的三缕烟雾上升<br>
+      底部金米色小点象征香插<br>
+      整体像一棵小松树，也有东方意境<br>
+      适合：头像、水印、小尺寸应用
+    </div>
+  </div>
+</div>
+
+<!-- 方案三：东方印章风 -->
+<div>
+  <div class="section-title">方案三 · 东方印章 Seal</div>
+  <div class="logo-3">
+    <div class="logo-3-seal">
+      <div class="logo-3-seal-inner">冰</div>
+    </div>
+    <div class="logo-3-text">
+      <div class="logo-3-en">InIce</div>
+      <div class="logo-3-zh">此处冰点</div>
+    </div>
+    <div class="logo-3-desc">
+      朱红印章风格的「冰」字<br>
+      四角留装饰边框，有篆刻感<br>
+      中英结合，既有东方底蕴又不失现代<br>
+      适合：礼盒、高端包装、品牌标识
+    </div>
+  </div>
+</div>
+
+<!-- 方案四：冰晶 + 香气 -->
+<div>
+  <div class="section-title">方案四 · 冰晶香气 Ice Crystal</div>
+  <div class="logo-4">
+    <div class="logo-4-icon">
+      <div class="ice-hex">
+        <svg viewBox="0 0 100 100" fill="none" stroke="#2C2C2C" stroke-width="1.5">
+          <polygon points="50,5 93,30 93,75 50,95 7,75 7,30" />
+          <line x1="50" y1="5" x2="50" y2="95" />
+          <line x1="7" y1="30" x2="93" y2="75" />
+          <line x1="93" y1="30" x2="7" y2="75" />
+        </svg>
+      </div>
+      <div class="logo-4-smoke"></div>
+    </div>
+    <div>
+      <div class="logo-4-text">InIce</div>
+      <div style="font-size: 12px; color: #999; margin-top: 4px; letter-spacing: 2px;">where noise dissolves into stillness</div>
+    </div>
+    <div class="logo-4-desc">
+      六角冰晶象征「Ice」<br>
+      中央升起一缕金米色烟雾，代表线香<br>
+      冷与暖、静与动的视觉对比<br>
+      适合：主视觉、海报、品牌故事页
+    </div>
+  </div>
+</div>
+
+<!-- 应用场景 -->
+<div>
+  <div class="section-title">应用示意</div>
+  <div class="applications">
+    <div class="app-card">
+      <div class="app-logo" style="font-size: 20px; letter-spacing: 3px;">InIce</div>
+      <div class="app-label">小红书头像</div>
+    </div>
+    <div class="app-card">
+      <div style="width: 40px; height: 40px; border: 1.5px solid #8B0000; display: flex; align-items: center; justify-content: center;">
+        <span style="font-size: 18px; color: #8B0000; font-weight: 700;">冰</span>
+      </div>
+      <div class="app-label">包装封口贴</div>
+    </div>
+    <div class="app-card">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <div style="width: 2px; height: 16px; background: #2C2C2C; opacity: 0.6; transform: rotate(-5deg);"></div>
+        <div style="width: 2px; height: 20px; background: #2C2C2C; opacity: 0.4; transform: rotate(3deg);"></div>
+        <span style="font-family: Cormorant Garamond; font-size: 16px; letter-spacing: 2px;">InIce</span>
+      </div>
+      <div class="app-label">水印/卡片</div>
+    </div>
+    <div class="app-card">
+      <svg width="24" height="24" viewBox="0 0 100 100" fill="none" stroke="#2C2C2C" stroke-width="3">
+        <polygon points="50,10 88,32 88,72 50,90 12,72 12,32" />
+      </svg>
+      <div class="app-label">网页图标</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

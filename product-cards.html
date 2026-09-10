@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>InIce Products</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Noto Serif SC', serif;
+  background: #E8E0D0;
+}
+
+.card {
+  width: 1200px;
+  height: 1600px;
+  background: #E8E0D0;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 档案卡片 */
+.archive-card {
+  width: 1000px;
+  height: 1480px;
+  background: #F5F0E6;
+  border-radius: 4px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.08), 0 2px 12px rgba(0,0,0,0.04);
+  padding: 45px 55px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* 左侧装饰竖线 */
+.archive-card::before {
+  content: '';
+  position: absolute;
+  left: 55px;
+  top: 45px;
+  bottom: 45px;
+  width: 1px;
+  background: rgba(196, 168, 130, 0.25);
+}
+
+/* 顶部信息栏 */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 18px;
+  padding-left: 28px;
+}
+.series-tag {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #A09070;
+  text-transform: uppercase;
+}
+.chakra-tag {
+  font-size: 11px;
+  color: #8A7A60;
+  letter-spacing: 2px;
+  text-align: right;
+}
+.chakra-tag .num {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  color: #A09070;
+}
+
+/* 产品标题 */
+.product-title {
+  text-align: center;
+  margin-bottom: 14px;
+  padding-left: 28px;
+}
+.product-title .cn {
+  font-size: 42px;
+  font-weight: 400;
+  color: #3A3020;
+  letter-spacing: 14px;
+  margin-bottom: 4px;
+}
+.product-title .en {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #9A8A70;
+  letter-spacing: 4px;
+}
+
+/* 照片 */
+.photo-wrap {
+  width: 420px;
+  height: 190px;
+  margin: 0 auto 18px;
+  overflow: hidden;
+  background: #FAF9F7;
+  position: relative;
+}
+.photo-wrap img {
+  width: 100%;
+  height: 220%;
+  object-fit: cover;
+  object-position: center 2%;
+}
+
+/* 调香笔记 */
+.note-section {
+  margin-bottom: 16px;
+  padding-left: 28px;
+}
+.note-label {
+  font-size: 9px;
+  color: #C4A882;
+  letter-spacing: 3px;
+  margin-bottom: 8px;
+  font-family: 'Cormorant Garamond', serif;
+  text-transform: uppercase;
+}
+.note-text {
+  font-size: 12px;
+  color: #5A4A30;
+  line-height: 1.9;
+  font-style: italic;
+  position: relative;
+  padding-left: 14px;
+  border-left: 2px solid rgba(196, 168, 130, 0.35);
+}
+
+/* 香气档案 */
+.archive-section {
+  margin-bottom: 16px;
+  padding-left: 28px;
+}
+.archive-label {
+  font-size: 9px;
+  color: #C4A882;
+  letter-spacing: 3px;
+  margin-bottom: 8px;
+  font-family: 'Cormorant Garamond', serif;
+  text-transform: uppercase;
+}
+.archive-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px 20px;
+}
+.archive-item {
+  font-size: 11px;
+  color: #6A5A40;
+  line-height: 1.6;
+}
+.archive-item .key {
+  color: #A09070;
+  margin-right: 6px;
+  font-size: 10px;
+}
+.archive-item-full {
+  grid-column: 1 / -1;
+  font-size: 11px;
+  color: #6A5A40;
+  line-height: 1.6;
+}
+.archive-item-full .key {
+  color: #A09070;
+  margin-right: 6px;
+  font-size: 10px;
+}
+
+/* 使用场景 */
+.scene-section {
+  margin-bottom: 14px;
+  padding-left: 28px;
+}
+.scene-label {
+  font-size: 9px;
+  color: #C4A882;
+  letter-spacing: 3px;
+  margin-bottom: 8px;
+  font-family: 'Cormorant Garamond', serif;
+  text-transform: uppercase;
+}
+.scene-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px 0;
+}
+.scene-item {
+  font-size: 11px;
+  color: #7A6A50;
+  line-height: 1.7;
+  width: 100%;
+}
+.scene-item::before {
+  content: '· ';
+  color: #C4A882;
+}
+
+/* 底部 */
+.footer {
+  margin-top: auto;
+  text-align: center;
+  padding-top: 10px;
+  padding-left: 28px;
+}
+.footer-line {
+  width: 24px;
+  height: 1px;
+  background: #C4A882;
+  margin: 0 auto 10px;
+}
+.footer-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px;
+  letter-spacing: 4px;
+  color: #7A6A50;
+  margin-bottom: 4px;
+}
+.footer-slogan {
+  font-size: 10px;
+  color: #A09070;
+  letter-spacing: 3px;
+}
+</style>
+</head>
+<body>
+
+<!-- 01 乳香 -->
+<div class="card">
+  <div class="archive-card">
+    <div class="header">
+      <div class="series-tag">InIce · Herbal Incense Archive</div>
+      <div class="chakra-tag"><span class="num">07</span> · 顶轮 Crown</div>
+    </div>
+    <div class="product-title">
+      <div class="cn">乳香</div>
+      <div class="en">Frankincense · 静心之香</div>
+    </div>
+    <div class="photo-wrap">
+      <img src="http://localhost:8889/product-raw/07-frankincense.jpg" alt="乳香">
+    </div>
+    <div class="note-section">
+      <div class="note-label">Blending Notes</div>
+      <div class="note-text">教堂穹顶下的烟，圣经里也写：那是神明在低处驻足的样子。乳香没有甜，没有凉，只剩一种极薄的「在」。像午睡醒来那一刻，窗帘透出的光，你还什么都没想，但世界已经变轻了。点一支，留 30 分钟给「不说话的自己」。</div>
+    </div>
+    <div class="archive-section">
+      <div class="archive-label">Aroma Profile</div>
+      <div class="archive-grid">
+        <div class="archive-item"><span class="key">基底</span>树脂基底 · 古埃及/中东三大圣香之一</div>
+        <div class="archive-item"><span class="key">萃取</span>阿曼乳香树脂 · 也门乳香精油</div>
+        <div class="archive-item"><span class="key">香调</span>木质香调带淡果香 · 醇厚 · 肃穆</div>
+        <div class="archive-item"><span class="key">能量</span>宇宙联结 · 开悟智慧 · 纯粹意识</div>
+        <div class="archive-item-full"><span class="key">温感</span>微凉（避高温点焚）</div>
+      </div>
+    </div>
+    <div class="scene-section">
+      <div class="scene-label">Ritual Moments</div>
+      <div class="scene-list">
+        <div class="scene-item">冥想 / 静心前 5 分钟点燃</div>
+        <div class="scene-item">失眠夜 · 关灯前立于床头</div>
+        <div class="scene-item">重大决定前 · 闭眼前一支</div>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="footer-line"></div>
+      <div class="footer-brand">InIce</div>
+      <div class="footer-slogan">世界本喧，此处冰点</div>
+    </div>
+  </div>
+</div>
+
+<!-- 02 没药 -->
+<div class="card">
+  <div class="archive-card">
+    <div class="header">
+      <div class="series-tag">InIce · Herbal Incense Archive</div>
+      <div class="chakra-tag"><span class="num">07</span> · 顶轮 Crown</div>
+    </div>
+    <div class="product-title">
+      <div class="cn">没药</div>
+      <div class="en">Myrrh · 沉淀之香</div>
+    </div>
+    <div class="photo-wrap">
+      <img src="http://localhost:8889/product-raw/05-myrrh.jpg" alt="没药">
+    </div>
+    <div class="note-section">
+      <div class="note-label">Blending Notes</div>
+      <div class="note-text">没药是"古墓里的香"。木乃伊裹身，寺庙开光，祭司登坛，统统都用它。它的气味不讨喜——温润、黏稠、压低嗓音。但每次闻，我都觉得身体里某处被轻轻按下。像被一句迟来的话抚平。给容易想太多的你。</div>
+    </div>
+    <div class="archive-section">
+      <div class="archive-label">Aroma Profile</div>
+      <div class="archive-grid">
+        <div class="archive-item"><span class="key">基底</span>树脂基底 · 与乳香并称中东双圣</div>
+        <div class="archive-item"><span class="key">萃取</span>阿曼/索马里没药树脂 · 没药精油</div>
+        <div class="archive-item"><span class="key">香调</span>温润醇厚 · 神秘 · 微苦</div>
+        <div class="archive-item"><span class="key">能量</span>转化 · 释放 · 深层意识</div>
+        <div class="archive-item-full"><span class="key">温感</span>温（建议秋冬点焚）</div>
+      </div>
+    </div>
+    <div class="scene-section">
+      <div class="scene-label">Ritual Moments</div>
+      <div class="scene-list">
+        <div class="scene-item">写日记 / 自省前</div>
+        <div class="scene-item">重大告别后 · 清理气场</div>
+        <div class="scene-item">静坐时感到"心里很重"</div>
+        <div class="scene-item">心绪焦虑又无法倾诉</div>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="footer-line"></div>
+      <div class="footer-brand">InIce</div>
+      <div class="footer-slogan">世界本喧，此处冰点</div>
+    </div>
+  </div>
+</div>
+
+<!-- 03 纳斯瓦 -->
+<div class="card">
+  <div class="archive-card">
+    <div class="header">
+      <div class="series-tag">InIce · Herbal Incense Archive</div>
+      <div class="chakra-tag"><span class="num">07</span> · 顶轮 Crown</div>
+    </div>
+    <div class="product-title">
+      <div class="cn">纳斯瓦</div>
+      <div class="en">Na Swa · 藏香之合</div>
+    </div>
+    <div class="photo-wrap">
+      <img src="http://localhost:8889/product-raw/06-na-swa.jpg" alt="纳斯瓦">
+    </div>
+    <div class="note-section">
+      <div class="note-label">Blending Notes</div>
+      <div class="note-text">甘松、竹柏、娑罗双树、肉豆蔻、没药、红花——这不是一支香，是一座藏地的坛城。你不必去拉萨才能被它抱住。关上门，闭上眼，30 分钟后，你会觉得自己是干净的。给特别疲倦、特别想"清零"的日子。</div>
+    </div>
+    <div class="archive-section">
+      <div class="archive-label">Aroma Profile</div>
+      <div class="archive-grid">
+        <div class="archive-item"><span class="key">配方</span>复合藏香配方 · 7 种以上天然草本</div>
+        <div class="archive-item"><span class="key">主调</span>甘松 + 竹柏 + 娑罗双树</div>
+        <div class="archive-item"><span class="key">中调</span>肉豆蔻 + 红花（番红花）</div>
+        <div class="archive-item"><span class="key">收尾</span>没药</div>
+        <div class="archive-item"><span class="key">香调</span>藏香气息 · 凝神静气 · 微辛辣</div>
+        <div class="archive-item"><span class="key">能量</span>合一 · 静心 · 灵性连接</div>
+        <div class="archive-item-full"><span class="key">温感</span>温（适合阴雨天 / 秋冬）</div>
+      </div>
+    </div>
+    <div class="scene-section">
+      <div class="scene-label">Ritual Moments</div>
+      <div class="scene-list">
+        <div class="scene-item">重要会议 / 演讲前夜</div>
+        <div class="scene-item">情绪"太满"想清空时</div>
+        <div class="scene-item">冥想 / 祈祷 / 抄经时</div>
+        <div class="scene-item">写年度复盘、个人周报时</div>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="footer-line"></div>
+      <div class="footer-brand">InIce</div>
+      <div class="footer-slogan">世界本喧，此处冰点</div>
+    </div>
+  </div>
+</div>
+
+<!-- 04 檀香木 -->
+<div class="card">
+  <div class="archive-card">
+    <div class="header">
+      <div class="series-tag">InIce · Herbal Incense Archive</div>
+      <div class="chakra-tag"><span class="num">06</span> · 眉心轮 Third Eye</div>
+    </div>
+    <div class="product-title">
+      <div class="cn">檀香木</div>
+      <div class="en">Sandalwood · 清明之香</div>
+    </div>
+    <div class="photo-wrap">
+      <img src="http://localhost:8889/product-raw/10-sandalwood.jpg" alt="檀香木">
+    </div>
+    <div class="note-section">
+      <div class="note-label">Blending Notes</div>
+      <div class="note-text">眉心是「看得见自己」的地方。檀香是老山才有的味道，温厚、致雅、不会飘。它像一位从不多言的师友——你说话时它不抢，你停下时它还在。给深夜还在纠结选哪条路的人。也许你不需要答案，你需要一支香的安静。</div>
+    </div>
+    <div class="archive-section">
+      <div class="archive-label">Aroma Profile</div>
+      <div class="archive-grid">
+        <div class="archive-item"><span class="key">配方</span>复合冥想配方 · 6 种天然草本</div>
+        <div class="archive-item"><span class="key">主调</span>印度老山檀香</div>
+        <div class="archive-item"><span class="key">中调</span>茉莉 · 圣罗勒</div>
+        <div class="archive-item"><span class="key">收尾</span>雪松 · 肉豆蔻 · 小豆蔻</div>
+        <div class="archive-item"><span class="key">香调</span>木质 · 平静 · 致雅</div>
+        <div class="archive-item"><span class="key">能量</span>直觉 · 清明 · 智慧</div>
+        <div class="archive-item-full"><span class="key">温感</span>温（四季皆宜）</div>
+      </div>
+    </div>
+    <div class="scene-section">
+      <div class="scene-label">Ritual Moments</div>
+      <div class="scene-list">
+        <div class="scene-item">阅读 / 写作 / 思考工作</div>
+        <div class="scene-item">周末的午茶时间</div>
+        <div class="scene-item">面试 / 谈事前 · 需要清醒</div>
+        <div class="scene-item">早晨 7 点 · 咖啡之外的开机仪式</div>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="footer-line"></div>
+      <div class="footer-brand">InIce</div>
+      <div class="footer-slogan">世界本喧，此处冰点</div>
+    </div>
+  </div>
+</div>
+
+<!-- 05 金香木 -->
+<div class="card">
+  <div class="archive-card">
+    <div class="header">
+      <div class="series-tag">InIce · Herbal Incense Archive</div>
+      <div class="chakra-tag"><span class="num">04</span> · 心轮 Heart</div>
+    </div>
+    <div class="product-title">
+      <div class="cn">金香木</div>
+      <div class="en">Nag Champa · 被爱之香</div>
+    </div>
+    <div class="photo-wrap">
+      <img src="http://localhost:8889/product-raw/01-nag-champa.jpg" alt="金香木">
+    </div>
+    <div class="note-section">
+      <div class="note-label">Blending Notes</div>
+      <div class="note-text">黄兰花、鸡蛋花、檀香——金香木是把"南亚的傍晚"点着了。它甜，但甜得不腻；温，但温得不糊。像一件被穿过很多次的棉麻衣，上面还有你最熟悉的那种气味。给很久没好好对待自己的你。</div>
+    </div>
+    <div class="archive-section">
+      <div class="archive-label">Aroma Profile</div>
+      <div class="archive-grid">
+        <div class="archive-item"><span class="key">配方</span>复合花木配方 · 3 大主调</div>
+        <div class="archive-item"><span class="key">顶调</span>黄兰花 · 鸡蛋花</div>
+        <div class="archive-item"><span class="key">中调</span>印度产绿叶香</div>
+        <div class="archive-item"><span class="key">收尾</span>檀香基底</div>
+        <div class="archive-item"><span class="key">香调</span>温和 · 甘甜 · 沉稳花香</div>
+        <div class="archive-item"><span class="key">能量</span>爱 · 接纳 · 柔软</div>
+        <div class="archive-item-full"><span class="key">温感</span>温（适合夜晚 / 冬季）</div>
+      </div>
+    </div>
+    <div class="scene-section">
+      <div class="scene-label">Ritual Moments</div>
+      <div class="scene-list">
+        <div class="scene-item">周末早晨赖床 1 小时</div>
+        <div class="scene-item">给伴侣 / 朋友写信前</div>
+        <div class="scene-item">看老电影 / 听老歌时</div>
+        <div class="scene-item">一个人吃饭也想好好摆盘时</div>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="footer-line"></div>
+      <div class="footer-brand">InIce</div>
+      <div class="footer-slogan">世界本喧，此处冰点</div>
+    </div>
+  </div>
+</div>
+
+<!-- 06 多吉 -->
+<div class="card">
+  <div class="archive-card">
+    <div class="header">
+      <div class="series-tag">InIce · Herbal Incense Archive</div>
+      <div class="chakra-tag"><span class="num">03</span> · 太阳神经丛 Solar Plexus</div>
+    </div>
+    <div class="product-title">
+      <div class="cn">多吉</div>
+      <div class="en">Dorjee · 底气之香</div>
+    </div>
+    <div class="photo-wrap">
+      <img src="http://localhost:8889/product-raw/04-dorjee.jpg" alt="多吉">
+    </div>
+    <div class="note-section">
+      <div class="note-label">Blending Notes</div>
+      <div class="note-text">"多吉"在藏语里是"金刚"——不破的那种。丁香、肉桂、缬草、十几种香料。它不是温柔的香，是有重力的香。闻起来像一只无形的手按在胃上：别怕。给要见重要客户、要开口说重话、要自己撑过一天的早上。</div>
+    </div>
+    <div class="archive-section">
+      <div class="archive-label">Aroma Profile</div>
+      <div class="archive-grid">
+        <div class="archive-item"><span class="key">配方</span>温补复合配方 · 10+ 种香料</div>
+        <div class="archive-item"><span class="key">主调</span>丁香 · 肉桂</div>
+        <div class="archive-item"><span class="key">中调</span>缬草</div>
+        <div class="archive-item"><span class="key">收尾</span>多种木质调</div>
+        <div class="archive-item"><span class="key">香调</span>放松 · 喜情 · 温热</div>
+        <div class="archive-item"><span class="key">能量</span>自我 · 力量 · 行动</div>
+        <div class="archive-item-full"><span class="key">温感</span>温热（秋冬 / 晨间首选）</div>
+      </div>
+    </div>
+    <div class="scene-section">
+      <div class="scene-label">Ritual Moments</div>
+      <div class="scene-list">
+        <div class="scene-item">重要会议 / 路演 / 提案前</div>
+        <div class="scene-item">需要"打鸡血"但又不想靠咖啡的早晨</div>
+        <div class="scene-item">跟难缠的人说话前</div>
+        <div class="scene-item">周末大扫除、收拾衣柜时</div>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="footer-line"></div>
+      <div class="footer-brand">InIce</div>
+      <div class="footer-slogan">世界本喧，此处冰点</div>
+    </div>
+  </div>
+</div>
+
+<!-- 07 香茅 -->
+<div class="card">
+  <div class="archive-card">
+    <div class="header">
+      <div class="series-tag">InIce · Herbal Incense Archive</div>
+      <div class="chakra-tag"><span class="num">03</span> · 太阳神经丛 Solar Plexus</div>
+    </div>
+    <div class="product-title">
+      <div class="cn">香茅</div>
+      <div class="en">Citronella · 提振之香</div>
+    </div>
+    <div class="photo-wrap">
+      <img src="http://localhost:8889/product-raw/08-citronella.jpg" alt="香茅">
+    </div>
+    <div class="note-section">
+      <div class="note-label">Blending Notes</div>
+      <div class="note-text">香茅是柑橘调的"小太阳"。不像香水那么精致，但它有夏天午后穿堂风的感觉——哗地一下清爽。浙大 2026 年研究证实：它的柠檬醛能刺激 α 脑波，让大脑回到"清醒又开心"的状态。给一觉醒来还累的、盯着屏幕发呆的你。</div>
+    </div>
+    <div class="archive-section">
+      <div class="archive-label">Aroma Profile</div>
+      <div class="archive-grid">
+        <div class="archive-item"><span class="key">配方</span>柑橘类单方复合 · 1 主调</div>
+        <div class="archive-item"><span class="key">萃取</span>尼泊尔/斯里兰卡香茅精油</div>
+        <div class="archive-item"><span class="key">香调</span>清新柑橘调 · 愉悦 · 微辛</div>
+        <div class="archive-item"><span class="key">能量</span>提振 · 清醒 · 喜悦</div>
+        <div class="archive-item-full"><span class="key">温感</span>凉（适合午后 / 夏季）</div>
+      </div>
+    </div>
+    <div class="scene-section">
+      <div class="scene-label">Ritual Moments</div>
+      <div class="scene-list">
+        <div class="scene-item">午后 1–3 点的"上班族低谷"</div>
+        <div class="scene-item">闷热夏日不想开空调的午休</div>
+        <div class="scene-item">居家办公头脑发闷</div>
+        <div class="scene-item">写不出东西、需要"换气"时</div>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="footer-line"></div>
+      <div class="footer-brand">InIce</div>
+      <div class="footer-slogan">世界本喧，此处冰点</div>
+    </div>
+  </div>
+</div>
+
+<!-- 08 奥斯塔 -->
+<div class="card">
+  <div class="archive-card">
+    <div class="header">
+      <div class="series-tag">InIce · Herbal Incense Archive</div>
+      <div class="chakra-tag"><span class="num">03</span> · 太阳神经丛 Solar Plexus</div>
+    </div>
+    <div class="product-title">
+      <div class="cn">奥斯塔</div>
+      <div class="en">Austha Suganda · 自我之香</div>
+    </div>
+    <div class="photo-wrap">
+      <img src="http://localhost:8889/product-raw/09-austha-suganda.jpg" alt="奥斯塔">
+    </div>
+    <div class="note-section">
+      <div class="note-label">Blending Notes</div>
+      <div class="note-text">番红花、缬草、甘草——番红花是古代价比黄金的香料，它的气味不是"贵"，是"远"。闻着像见到一位活得很笃定的人，不张扬，但你信他。给觉得自己"不够亮"的下午。</div>
+    </div>
+    <div class="archive-section">
+      <div class="archive-label">Aroma Profile</div>
+      <div class="archive-grid">
+        <div class="archive-item"><span class="key">配方</span>高阶复合配方 · 3 大主调</div>
+        <div class="archive-item"><span class="key">顶调</span>番红花（藏红花）</div>
+        <div class="archive-item"><span class="key">中调</span>缬草</div>
+        <div class="archive-item"><span class="key">收尾</span>甘草</div>
+        <div class="archive-item"><span class="key">香调</span>含蓄 · 温润 · 微甘</div>
+        <div class="archive-item"><span class="key">能量</span>自我价值 · 自信 · 笃定</div>
+        <div class="archive-item-full"><span class="key">温感</span>温（四季皆宜）</div>
+      </div>
+    </div>
+    <div class="scene-section">
+      <div class="scene-label">Ritual Moments</div>
+      <div class="scene-list">
+        <div class="scene-item">早起照镜子觉得自己"灰扑扑"时</div>
+        <div class="scene-item">重要汇报 / 拍摄 / 视频前</div>
+        <div class="scene-item">周日晚上想"重新出发"时</div>
+        <div class="scene-item">想送一支给最努力的那个朋友</div>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="footer-line"></div>
+      <div class="footer-brand">InIce</div>
+      <div class="footer-slogan">世界本喧，此处冰点</div>
+    </div>
+  </div>
+</div>
+
+<!-- 09 神木 -->
+<div class="card">
+  <div class="archive-card">
+    <div class="header">
+      <div class="series-tag">InIce · Herbal Incense Archive</div>
+      <div class="chakra-tag"><span class="num">01</span> · 海底轮 Root</div>
+    </div>
+    <div class="product-title">
+      <div class="cn">神木</div>
+      <div class="en">Devdar · 扎根之香</div>
+    </div>
+    <div class="photo-wrap">
+      <img src="http://localhost:8889/product-raw/03-devdar.jpg" alt="神木">
+    </div>
+    <div class="note-section">
+      <div class="note-label">Blending Notes</div>
+      <div class="note-text">"Devdar"是梵语"神木"——喜马拉雅雪松就是它。闻它的时候，身体会先于大脑做出反应：肩膀松了，脚踩实了。你不必去山里，一支雪松也能把你从悬空的状态里接回地面。给晚上睡不着、白天醒不过来的人。</div>
+    </div>
+    <div class="archive-section">
+      <div class="archive-label">Aroma Profile</div>
+      <div class="archive-grid">
+        <div class="archive-item"><span class="key">配方</span>雪松单方配方 · 1 主调</div>
+        <div class="archive-item"><span class="key">萃取</span>喜马拉雅雪松精油</div>
+        <div class="archive-item"><span class="key">香调</span>木质 · 沉稳 · 助眠安神</div>
+        <div class="archive-item"><span class="key">能量</span>安全感 · 扎根 · 沉稳</div>
+        <div class="archive-item-full"><span class="key">温感</span>温（适合夜晚）</div>
+      </div>
+    </div>
+    <div class="scene-section">
+      <div class="scene-label">Ritual Moments</div>
+      <div class="scene-list">
+        <div class="scene-item">睡前 1 小时 · 替代刷手机</div>
+        <div class="scene-item">异地出差 · 睡酒店认床</div>
+        <div class="scene-item">节后第一天 · 重新"落地"</div>
+        <div class="scene-item">容易焦虑、做噩梦的人</div>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="footer-line"></div>
+      <div class="footer-brand">InIce</div>
+      <div class="footer-slogan">世界本喧，此处冰点</div>
+    </div>
+  </div>
+</div>
+
+<!-- 10 喜马拉雅雪松 -->
+<div class="card">
+  <div class="archive-card">
+    <div class="header">
+      <div class="series-tag">InIce · Herbal Incense Archive</div>
+      <div class="chakra-tag"><span class="num">01</span> · 海底轮 Root</div>
+    </div>
+    <div class="product-title">
+      <div class="cn">喜马拉雅雪松</div>
+      <div class="en">Himalayan Cedar · 沉稳之香</div>
+    </div>
+    <div class="photo-wrap">
+      <img src="http://localhost:8889/product-raw/02-himalayan-cedar.jpg" alt="喜马拉雅雪松">
+    </div>
+    <div class="note-section">
+      <div class="note-label">Blending Notes</div>
+      <div class="note-text">比"神木"更深一寸的雪松。神木让你"落地"，喜马拉雅雪松让你"坐在地上不着急起来"。它不帮任何忙，但闻过它的人都说：心里那根线，不抖了。给想慢下来的人。</div>
+    </div>
+    <div class="archive-section">
+      <div class="archive-label">Aroma Profile</div>
+      <div class="archive-grid">
+        <div class="archive-item"><span class="key">配方</span>雪松复合配方 · 雪松 + 草本</div>
+        <div class="archive-item"><span class="key">萃取</span>喜马拉雅雪松精油</div>
+        <div class="archive-item"><span class="key">香调</span>醇厚木质 · 深邃沉静</div>
+        <div class="archive-item"><span class="key">能量</span>安全 · 稳定 · 大地连接</div>
+        <div class="archive-item-full"><span class="key">温感</span>温（适合秋冬季 / 深夜）</div>
+      </div>
+    </div>
+    <div class="scene-section">
+      <div class="scene-label">Ritual Moments</div>
+      <div class="scene-list">
+        <div class="scene-item">深夜独处 · 思考远的事</div>
+        <div class="scene-item">泡脚 / 泡澡时 · 配合呼吸</div>
+        <div class="scene-item">雨天 / 阴天 · 体感沉闷时</div>
+        <div class="scene-item">焦虑发作时 · 作为「锚」</div>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="footer-line"></div>
+      <div class="footer-brand">InIce</div>
+      <div class="footer-slogan">世界本喧，此处冰点</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

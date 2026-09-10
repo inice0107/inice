@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #F7F3EC;
+  font-family: "Noto Serif SC", "PingFang SC", serif;
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+.section-title {
+  font-size: 12px;
+  color: #999;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+/* ===== 主 Logo - 横版（图形 + 文字）===== */
+.logo-main {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.logo-icon {
+  width: 60px;
+  height: 60px;
+  position: relative;
+}
+/* 烟雾线条 - 更自然的曲线 */
+.smoke {
+  position: absolute;
+  bottom: 12px;
+  width: 2px;
+  background: #2C2C2C;
+  border-radius: 1px;
+  transform-origin: bottom center;
+}
+.smoke-1 {
+  left: 18px;
+  height: 28px;
+  transform: rotate(-12deg);
+  opacity: 0.85;
+}
+.smoke-2 {
+  left: 50%;
+  transform: translateX(-50%);
+  height: 40px;
+  opacity: 0.55;
+}
+.smoke-3 {
+  right: 18px;
+  height: 22px;
+  transform: rotate(12deg);
+  opacity: 0.35;
+}
+/* 香插底座 */
+.incense-holder {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 24px;
+  height: 10px;
+  background: #C4A882;
+  border-radius: 5px;
+}
+/* 香插上的小凹槽 */
+.incense-holder::after {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 6px;
+  background: #C4A882;
+  border-radius: 50%;
+}
+.logo-text-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.logo-text {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 42px;
+  font-weight: 300;
+  letter-spacing: 8px;
+  color: #2C2C2C;
+  line-height: 1;
+}
+.logo-tagline {
+  font-size: 11px;
+  color: #999;
+  letter-spacing: 3px;
+  margin-top: 4px;
+}
+
+/* ===== 图标版（仅图形）===== */
+.logo-icon-only {
+  width: 120px;
+  height: 120px;
+  background: #FDFCFA;
+  border: 1px solid #E5E0D8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.logo-icon-only .logo-icon {
+  width: 80px;
+  height: 80px;
+}
+.logo-icon-only .smoke-1 { height: 36px; left: 24px; }
+.logo-icon-only .smoke-2 { height: 52px; }
+.logo-icon-only .smoke-3 { height: 30px; right: 24px; }
+.logo-icon-only .incense-holder { width: 32px; height: 12px; }
+
+/* ===== 竖版（图形在上，文字在下）===== */
+.logo-vertical {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 200px;
+  padding: 40px 20px;
+  background: #FDFCFA;
+  border: 1px solid #E5E0D8;
+}
+.logo-vertical .logo-icon {
+  width: 80px;
+  height: 80px;
+}
+.logo-vertical .smoke-1 { height: 36px; left: 24px; }
+.logo-vertical .smoke-2 { height: 52px; }
+.logo-vertical .smoke-3 { height: 30px; right: 24px; }
+.logo-vertical .incense-holder { width: 32px; height: 12px; }
+.logo-vertical .logo-text {
+  font-size: 32px;
+  letter-spacing: 6px;
+}
+
+/* ===== 反白版本（深色背景）===== */
+.logo-dark {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  background: #2C2C2C;
+  padding: 40px;
+  width: fit-content;
+}
+.logo-dark .smoke {
+  background: #F7F3EC;
+}
+.logo-dark .incense-holder {
+  background: #C4A882;
+}
+.logo-dark .incense-holder::after {
+  background: #C4A882;
+}
+.logo-dark .logo-text {
+  color: #F7F3EC;
+}
+.logo-dark .logo-tagline {
+  color: #999;
+}
+
+/* ===== 单色线条版（适合印刷/烫金）===== */
+.logo-line {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.logo-line .logo-icon {
+  width: 60px;
+  height: 60px;
+}
+.logo-line .smoke {
+  background: transparent;
+  border-left: 1.5px solid #2C2C2C;
+  width: 0;
+  border-radius: 0;
+}
+.logo-line .smoke-1 {
+  left: 18px;
+  height: 28px;
+  transform: rotate(-12deg);
+  opacity: 1;
+  border-left-width: 1.5px;
+}
+.logo-line .smoke-2 {
+  left: 50%;
+  transform: translateX(-50%);
+  height: 40px;
+  opacity: 0.6;
+  border-left-width: 1.5px;
+}
+.logo-line .smoke-3 {
+  right: 18px;
+  height: 22px;
+  transform: rotate(12deg);
+  opacity: 0.3;
+  border-left-width: 1.5px;
+}
+.logo-line .incense-holder {
+  background: transparent;
+  border: 1.5px solid #2C2C2C;
+}
+.logo-line .incense-holder::after {
+  background: transparent;
+  border: 1.5px solid #2C2C2C;
+  width: 5px;
+  height: 5px;
+}
+
+/* ===== 应用场景展示 ===== */
+.apps-row {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+.app-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+.app-box {
+  background: #FDFCFA;
+  border: 1px solid #E5E0D8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.app-label {
+  font-size: 11px;
+  color: #999;
+  letter-spacing: 2px;
+}
+
+/* 小红书头像 */
+.app-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+.app-avatar .logo-icon {
+  width: 50px;
+  height: 50px;
+}
+.app-avatar .smoke-1 { height: 22px; left: 15px; }
+.app-avatar .smoke-2 { height: 32px; }
+.app-avatar .smoke-3 { height: 18px; right: 15px; }
+.app-avatar .incense-holder { width: 20px; height: 8px; }
+
+/* 封口贴 */
+.app-sticker {
+  width: 150px;
+  height: 40px;
+}
+.app-sticker .logo-icon {
+  width: 24px;
+  height: 24px;
+}
+.app-sticker .smoke-1 { height: 10px; left: 7px; width: 1px; }
+.app-sticker .smoke-2 { height: 16px; width: 1px; }
+.app-sticker .smoke-3 { height: 8px; right: 7px; width: 1px; }
+.app-sticker .incense-holder { width: 10px; height: 4px; }
+.app-sticker .logo-text {
+  font-size: 16px;
+  letter-spacing: 3px;
+}
+
+/* 卡片水印 */
+.app-watermark {
+  width: 200px;
+  height: 120px;
+  flex-direction: column;
+  gap: 8px;
+}
+.app-watermark .logo-icon {
+  width: 32px;
+  height: 32px;
+}
+.app-watermark .smoke-1 { height: 14px; left: 10px; width: 1px; }
+.app-watermark .smoke-2 { height: 20px; width: 1px; }
+.app-watermark .smoke-3 { height: 12px; right: 10px; width: 1px; }
+.app-watermark .incense-holder { width: 14px; height: 5px; }
+.app-watermark .logo-text {
+  font-size: 18px;
+  letter-spacing: 3px;
+}
+</style>
+</head>
+<body>
+
+<!-- 主 Logo 横版 -->
+<div>
+  <div class="section-title">主 Logo · 横版</div>
+  <div class="logo-main">
+    <div class="logo-icon">
+      <div class="smoke smoke-1"></div>
+      <div class="smoke smoke-2"></div>
+      <div class="smoke smoke-3"></div>
+      <div class="incense-holder"></div>
+    </div>
+    <div class="logo-text-group">
+      <div class="logo-text">InIce</div>
+      <div class="logo-tagline">世界本喧，此处冰点</div>
+    </div>
+  </div>
+</div>
+
+<!-- 图标版 -->
+<div>
+  <div class="section-title">图标版 · 头像 / 水印</div>
+  <div class="logo-icon-only">
+    <div class="logo-icon">
+      <div class="smoke smoke-1"></div>
+      <div class="smoke smoke-2"></div>
+      <div class="smoke smoke-3"></div>
+      <div class="incense-holder"></div>
+    </div>
+  </div>
+</div>
+
+<!-- 竖版 -->
+<div>
+  <div class="section-title">竖版 · 包装 / 海报</div>
+  <div class="logo-vertical">
+    <div class="logo-icon">
+      <div class="smoke smoke-1"></div>
+      <div class="smoke smoke-2"></div>
+      <div class="smoke smoke-3"></div>
+      <div class="incense-holder"></div>
+    </div>
+    <div class="logo-text">InIce</div>
+    <div class="logo-tagline">世界本喧，此处冰点</div>
+  </div>
+</div>
+
+<!-- 反白版 -->
+<div>
+  <div class="section-title">反白版 · 深色背景</div>
+  <div class="logo-dark">
+    <div class="logo-icon">
+      <div class="smoke smoke-1"></div>
+      <div class="smoke smoke-2"></div>
+      <div class="smoke smoke-3"></div>
+      <div class="incense-holder"></div>
+    </div>
+    <div class="logo-text-group">
+      <div class="logo-text">InIce</div>
+      <div class="logo-tagline">世界本喧，此处冰点</div>
+    </div>
+  </div>
+</div>
+
+<!-- 单色线条版 -->
+<div>
+  <div class="section-title">线条版 · 印刷 / 烫金</div>
+  <div class="logo-line">
+    <div class="logo-icon">
+      <div class="smoke smoke-1"></div>
+      <div class="smoke smoke-2"></div>
+      <div class="smoke smoke-3"></div>
+      <div class="incense-holder"></div>
+    </div>
+    <div class="logo-text-group">
+      <div class="logo-text">InIce</div>
+      <div class="logo-tagline">世界本喧，此处冰点</div>
+    </div>
+  </div>
+</div>
+
+<!-- 应用场景 -->
+<div>
+  <div class="section-title">应用场景</div>
+  <div class="apps-row">
+    <div class="app-item">
+      <div class="app-box app-avatar">
+        <div class="logo-icon">
+          <div class="smoke smoke-1"></div>
+          <div class="smoke smoke-2"></div>
+          <div class="smoke smoke-3"></div>
+          <div class="incense-holder"></div>
+        </div>
+      </div>
+      <div class="app-label">小红书头像</div>
+    </div>
+    <div class="app-item">
+      <div class="app-box app-sticker">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <div class="logo-icon">
+            <div class="smoke smoke-1"></div>
+            <div class="smoke smoke-2"></div>
+            <div class="smoke smoke-3"></div>
+            <div class="incense-holder"></div>
+          </div>
+          <div class="logo-text" style="font-size: 14px; letter-spacing: 2px;">InIce</div>
+        </div>
+      </div>
+      <div class="app-label">封口贴</div>
+    </div>
+    <div class="app-item">
+      <div class="app-box app-watermark">
+        <div class="logo-icon">
+          <div class="smoke smoke-1"></div>
+          <div class="smoke smoke-2"></div>
+          <div class="smoke smoke-3"></div>
+          <div class="incense-holder"></div>
+        </div>
+        <div class="logo-text" style="font-size: 16px; letter-spacing: 3px;">InIce</div>
+        <div style="font-size: 10px; color: #C4A882; letter-spacing: 2px;">HANDMADE INCENSE</div>
+      </div>
+      <div class="app-label">卡片水印</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

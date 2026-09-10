@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body { font-family: 'Noto Serif SC', serif; }
+
+/* ===== 方案A：经典衬线（参考闻献） ===== */
+.logo-a-h {
+  width: 500px;
+  height: 200px;
+  background: #F5F0E8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+.logo-a-h .brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 56px;
+  font-weight: 400;
+  color: #3A3020;
+  letter-spacing: 8px;
+  line-height: 1;
+}
+.logo-a-h .brand i {
+  font-style: italic;
+  letter-spacing: 2px;
+}
+.logo-a-h .slogan {
+  font-size: 13px;
+  color: #9A8A70;
+  letter-spacing: 6px;
+}
+
+.logo-a-v {
+  width: 300px;
+  height: 300px;
+  background: #FFFEFB;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  border: 1px solid rgba(196,168,130,0.12);
+}
+.logo-a-v .brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 42px;
+  font-weight: 400;
+  color: #3A3020;
+  letter-spacing: 6px;
+}
+.logo-a-v .slogan {
+  font-size: 12px;
+  color: #9A8A70;
+  letter-spacing: 4px;
+}
+
+.logo-a-inv {
+  width: 500px;
+  height: 200px;
+  background: #2A2A2A;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+.logo-a-inv .brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 56px;
+  font-weight: 400;
+  color: #F5F0E8;
+  letter-spacing: 8px;
+}
+.logo-a-inv .slogan {
+  font-size: 13px;
+  color: #B0A090;
+  letter-spacing: 6px;
+}
+
+/* ===== 方案B：高对比度衬线（更时尚） ===== */
+.logo-b-h {
+  width: 500px;
+  height: 200px;
+  background: #F5F0E8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.logo-b-h .brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 54px;
+  font-weight: 400;
+  color: #3A3020;
+  letter-spacing: 4px;
+}
+.logo-b-h .brand .i1 { font-style: italic; }
+.logo-b-h .brand .i2 { font-style: italic; }
+.logo-b-h .slogan {
+  font-size: 12px;
+  color: #9A8A70;
+  letter-spacing: 5px;
+  margin-top: 4px;
+}
+
+/* ===== 方案C：极简无衬线（现代感） ===== */
+.logo-c-h {
+  width: 500px;
+  height: 200px;
+  background: #F5F0E8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+.logo-c-h .brand {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 48px;
+  font-weight: 300;
+  color: #3A3020;
+  letter-spacing: 12px;
+}
+.logo-c-h .slogan {
+  font-size: 12px;
+  color: #9A8A70;
+  letter-spacing: 5px;
+}
+
+/* ===== 方案D：竖排组合（东方感） ===== */
+.logo-d-v {
+  width: 300px;
+  height: 400px;
+  background: #FFFEFB;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  border: 1px solid rgba(196,168,130,0.12);
+}
+.logo-d-v .brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px;
+  font-weight: 400;
+  color: #3A3020;
+  letter-spacing: 4px;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+.logo-d-v .divider {
+  width: 1px;
+  height: 40px;
+  background: rgba(196,168,130,0.3);
+}
+.logo-d-v .slogan {
+  font-size: 12px;
+  color: #9A8A70;
+  letter-spacing: 3px;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+}
+
+/* ===== 应用预设 ===== */
+.logo-avatar {
+  width: 100px;
+  height: 100px;
+  background: #FFFEFB;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid rgba(196,168,130,0.15);
+}
+.logo-avatar .brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: #3A3020;
+  letter-spacing: 2px;
+}
+
+.logo-watermark {
+  width: 280px;
+  height: 120px;
+  background: #FFFEFB;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: 1px solid rgba(196,168,130,0.12);
+}
+.logo-watermark .brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: #3A3020;
+  letter-spacing: 4px;
+}
+.logo-watermark .sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 8px;
+  color: #B0A090;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.logo-seal {
+  width: 120px;
+  height: 120px;
+  background: #C4A882;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+}
+.logo-seal .brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #FFFEFB;
+  letter-spacing: 2px;
+}
+
+.item { margin: 30px; }
+</style>
+</head>
+<body>
+
+<!-- ===== 方案A：经典衬线 ===== -->
+<div class="item logo-a-h" id="logo-a-h">
+  <div class="brand">InIce</div>
+  <div class="slogan">世界本喧，此处冰点</div>
+</div>
+
+<div class="item logo-a-v" id="logo-a-v">
+  <div class="brand">InIce</div>
+  <div class="slogan">世界本喧，此处冰点</div>
+</div>
+
+<div class="item logo-a-inv" id="logo-a-inv">
+  <div class="brand">InIce</div>
+  <div class="slogan">世界本喧，此处冰点</div>
+</div>
+
+<!-- ===== 方案B：高对比度衬线 ===== -->
+<div class="item logo-b-h" id="logo-b-h">
+  <div class="brand"><span class="i1">I</span>n<span class="i2">I</span>ce</div>
+  <div class="slogan">世界本喧，此处冰点</div>
+</div>
+
+<!-- ===== 方案C：极简无衬线 ===== -->
+<div class="item logo-c-h" id="logo-c-h">
+  <div class="brand">InIce</div>
+  <div class="slogan">世界本喧，此处冰点</div>
+</div>
+
+<!-- ===== 方案D：竖排东方 ===== -->
+<div class="item logo-d-v" id="logo-d-v">
+  <div class="brand">InIce</div>
+  <div class="divider"></div>
+  <div class="slogan">冰点</div>
+</div>
+
+<!-- ===== 应用预设 ===== -->
+<div class="item logo-avatar" id="logo-avatar">
+  <div class="brand">InIce</div>
+</div>
+
+<div class="item logo-watermark" id="logo-watermark">
+  <div class="brand">InIce</div>
+  <div class="sub">Handmade Incense</div>
+</div>
+
+<div class="item logo-seal" id="logo-seal">
+  <div class="brand">InIce</div>
+</div>
+
+</body>
+</html>
