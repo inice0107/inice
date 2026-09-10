@@ -4,13 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>InIce — 世界本喧，此处冰点</title>
-  <meta name="description" content="InIce, where noise dissolves into stillness. 七脉轮草本线香">
+  <meta name="description" content="InIce, where noise dissolves into stillness. 七脉轮与五行草本线香品牌。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;600;700&family=Noto+Sans+SC:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <style>
-    /* ===== HERO SECTION ===== */
     .hero {
       min-height: 100vh;
       display: flex;
@@ -19,226 +18,194 @@
       justify-content: center;
       text-align: center;
       padding: 2rem;
-      position: relative;
       background: var(--bg-cream);
+      position: relative;
     }
-    .hero-content { max-width: 800px; }
     .hero-brand {
       font-family: 'Playfair Display', serif;
       font-size: clamp(3rem, 8vw, 6rem);
       font-weight: 400;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.2em;
       color: var(--text-primary);
-      margin-bottom: 1.5rem;
-      line-height: 1.1;
-    }
-    .hero-line {
-      width: 60px; height: 1px;
-      background: var(--accent-gold);
-      margin: 0 auto 2rem;
+      margin-bottom: 1rem;
     }
     .hero-slogan {
       font-family: 'Noto Serif SC', serif;
-      font-size: clamp(1rem, 2.5vw, 1.4rem);
+      font-size: clamp(0.9rem, 2vw, 1.2rem);
       font-weight: 300;
       letter-spacing: 0.3em;
-      color: var(--text-secondary);
-      margin-bottom: 1rem;
-    }
-    .hero-slogan-en {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(0.85rem, 2vw, 1.1rem);
-      font-weight: 300;
-      font-style: italic;
-      letter-spacing: 0.1em;
       color: var(--text-muted);
+      margin-bottom: 4rem;
+    }
+    .hero-line {
+      width: 40px;
+      height: 1px;
+      background: var(--border-light);
+      margin: 0 auto 3rem;
+    }
+    .hero-story {
+      max-width: 520px;
+      font-family: 'Noto Serif SC', serif;
+      font-size: 0.9rem;
+      font-weight: 300;
+      line-height: 2.2;
+      color: var(--text-secondary);
+      letter-spacing: 0.08em;
+      margin-bottom: 4rem;
+    }
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1rem 3rem;
+      background: var(--text-primary);
+      color: var(--bg-cream);
+      text-decoration: none;
+      font-family: 'Noto Sans SC', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      border: 1px solid var(--text-primary);
+      transition: all var(--transition-fast);
+    }
+    .hero-cta:hover {
+      background: transparent;
+      color: var(--text-primary);
     }
     .scroll-hint {
       position: absolute;
-      bottom: 3rem; left: 50%;
+      bottom: 2rem;
+      left: 50%;
       transform: translateX(-50%);
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 0.5rem;
-      animation: bounce 2s infinite;
-    }
-    .scroll-hint span {
+      color: var(--text-muted);
       font-size: 0.65rem;
       letter-spacing: 0.2em;
-      color: var(--text-muted);
-      writing-mode: vertical-rl;
+      animation: float 2s ease-in-out infinite;
     }
-    .scroll-hint .arrow {
-      width: 1px; height: 30px;
-      background: linear-gradient(to bottom, var(--accent-gold), transparent);
-    }
-    @keyframes bounce {
+    @keyframes float {
       0%, 100% { transform: translateX(-50%) translateY(0); }
-      50% { transform: translateX(-50%) translateY(8px); }
+      50% { transform: translateX(-50%) translateY(-6px); }
     }
+    .scroll-hint svg { width: 16px; height: 16px; }
 
-    /* ===== PHILOSOPHY ===== */
-    .philosophy {
-      background: var(--bg-cream);
-      padding: 10rem 2rem;
-      position: relative;
-      overflow: hidden;
-      text-align: center;
-    }
-    .philosophy-inner { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
-    .philosophy-quote {
-      font-family: 'Noto Serif SC', serif;
-      font-size: clamp(1.8rem, 5vw, 3rem);
-      font-weight: 400;
-      letter-spacing: 0.2em;
-      line-height: 1.8;
-      color: var(--text-primary);
-    }
-    .philosophy-quote-en {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.1rem, 3vw, 1.6rem);
-      font-weight: 300;
-      font-style: italic;
-      letter-spacing: 0.05em;
-      color: var(--text-muted);
-      margin-top: 1.5rem;
-    }
-    .philosophy-deco {
-      position: absolute;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 25rem;
-      font-weight: 300;
-      color: rgba(196, 168, 130, 0.04);
-      line-height: 1;
-      user-select: none;
-      pointer-events: none;
-    }
-    .philosophy-deco.left { top: -5rem; left: -5rem; }
-    .philosophy-deco.right { bottom: -8rem; right: -3rem; }
-
-    /* ===== SERIES PREVIEW ===== */
-    .series-preview {
+    .brand-story-section {
+      padding: 8rem 2rem;
       background: var(--bg-white);
-      padding: 10rem 2rem;
     }
-    .series-inner { max-width: 1100px; margin: 0 auto; }
-    .series-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 3rem;
-      margin-top: 4rem;
-    }
-    .series-card {
-      position: relative;
-      overflow: hidden;
-      background: var(--bg-cream);
-      border: 1px solid var(--border-light);
-      cursor: pointer;
-      text-decoration: none;
-      display: block;
-      transition: transform var(--transition-fast), box-shadow var(--transition-fast);
-    }
-    .series-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.06);
-    }
-    .series-card img {
-      width: 100%;
-      height: 320px;
-      object-fit: cover;
-      display: block;
-      filter: sepia(5%) saturate(95%);
-      transition: transform 1.5s cubic-bezier(0.25, 0.1, 0.25, 1);
-    }
-    .series-card:hover img { transform: scale(1.03); }
-    .series-card-content {
-      padding: 2.5rem;
+    .brand-story-inner {
+      max-width: 640px;
+      margin: 0 auto;
       text-align: center;
     }
-    .series-card-label {
+    .section-label {
       font-family: 'Cormorant Garamond', serif;
       font-size: 0.7rem;
-      letter-spacing: 0.4em;
+      letter-spacing: 0.3em;
       text-transform: uppercase;
       color: var(--accent-gold);
-      margin-bottom: 0.8rem;
+      margin-bottom: 1.5rem;
     }
-    .series-card-title {
+    .brand-story-inner h2 {
       font-family: 'Noto Serif SC', serif;
       font-size: 1.4rem;
       font-weight: 400;
       letter-spacing: 0.15em;
+      margin-bottom: 2rem;
       color: var(--text-primary);
-      margin-bottom: 0.3rem;
     }
-    .series-card-title-en {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.95rem;
-      font-style: italic;
-      color: var(--text-muted);
-    }
-
-    /* ===== FEATURED PRODUCTS ===== */
-    .featured {
-      background: var(--bg-cream);
-      padding: 10rem 2rem;
-    }
-    .featured-inner { max-width: 1100px; margin: 0 auto; }
-    .featured-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2rem;
-      margin-top: 4rem;
-    }
-    .featured-item {
-      text-align: center;
-      cursor: pointer;
-    }
-    .featured-item img {
-      width: 100%;
-      aspect-ratio: 1;
-      object-fit: cover;
-      display: block;
-      margin-bottom: 1.2rem;
-      filter: sepia(5%) saturate(95%);
-      transition: transform var(--transition-fast);
-    }
-    .featured-item:hover img { transform: scale(1.03); }
-    .featured-item h4 {
+    .brand-story-inner p {
       font-family: 'Noto Serif SC', serif;
-      font-size: 1rem;
-      font-weight: 400;
-      letter-spacing: 0.1em;
-      color: var(--text-primary);
-      margin-bottom: 0.2rem;
-    }
-    .featured-item p {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.85rem;
-      font-style: italic;
-      color: var(--text-muted);
+      font-size: 0.9rem;
+      font-weight: 300;
+      line-height: 2.4;
+      color: var(--text-secondary);
+      letter-spacing: 0.05em;
+      margin-bottom: 1.5rem;
     }
 
-    /* ===== CTA SECTION ===== */
-    .cta-section {
-      background: var(--bg-white);
+    .series-entry-section {
       padding: 8rem 2rem;
+      background: var(--bg-cream);
+    }
+    .series-entry-inner {
+      max-width: 800px;
+      margin: 0 auto;
       text-align: center;
     }
-    .cta-section .section-title { margin-bottom: 2rem; }
-
-    @media (max-width: 768px) {
+    .series-entry-inner h2 {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+    .series-entry-inner .sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      font-style: italic;
+      color: var(--text-muted);
+      margin-bottom: 3rem;
+    }
+    .series-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    .series-card {
+      display: block;
+      padding: 4rem 2rem;
+      background: var(--bg-white);
+      border: 1px solid var(--border-light);
+      text-decoration: none;
+      text-align: center;
+      transition: all var(--transition-fast);
+    }
+    .series-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.06);
+      border-color: var(--text-primary);
+    }
+    .series-card-name {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.3rem;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+    .series-card-name-en {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.9rem;
+      font-style: italic;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .series-card-desc {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      letter-spacing: 0.05em;
+    }
+    .series-card-count {
+      margin-top: 1.5rem;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      color: var(--accent-gold);
+    }
+    @media (max-width: 600px) {
       .series-grid { grid-template-columns: 1fr; }
-      .featured-grid { grid-template-columns: repeat(2, 1fr); }
-      .philosophy-deco { font-size: 15rem; }
     }
   </style>
 </head>
 <body>
   <div class="page-transition"></div>
 
-  <!-- Loading -->
   <div id="loading">
     <div class="loading-content">
       <div class="loading-brand">In<span style="font-style:italic">I</span>ce</div>
@@ -247,13 +214,6 @@
     </div>
   </div>
 
-  <!-- Lightbox -->
-  <div class="lightbox" id="lightbox">
-    <button class="lightbox-close">&times;</button>
-    <img id="lightbox-img" src="" alt="">
-  </div>
-
-  <!-- Nav -->
   <nav id="navbar">
     <a href="./index.html" class="nav-brand">In<span style="font-style:italic">I</span>ce</a>
     <ul class="nav-links">
@@ -273,108 +233,64 @@
     <a href="./contact.html">联络</a>
   </div>
 
-  <!-- Hero -->
-  <section class="hero" id="hero">
-    <div class="hero-content">
-      <h1 class="hero-brand reveal">In<span style="font-style:italic">I</span>ce</h1>
-      <div class="hero-line reveal reveal-delay-1"></div>
-      <p class="hero-slogan reveal reveal-delay-2">世界本喧，此处冰点</p>
-      <p class="hero-slogan-en reveal reveal-delay-3">Where noise dissolves into stillness</p>
-    </div>
+  <section class="hero">
+    <div class="hero-brand reveal">In<span style="font-style:italic">I</span>ce</div>
+    <p class="hero-slogan reveal reveal-delay-1">世界本喧，此处冰点</p>
+    <div class="hero-line reveal reveal-delay-2"></div>
+    <p class="hero-story reveal reveal-delay-2">
+      InIce, where noise dissolves into stillness.<br>
+      在喧嚣的世界里，我们寻找一处冰点。<br>
+      一支线香，一缕轻烟，一个让时间慢下来的瞬间。
+    </p>
+    <a href="./products.html" class="hero-cta reveal reveal-delay-3">
+      探索产品系列
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
     <div class="scroll-hint">
-      <span>SCROLL</span>
-      <div class="arrow"></div>
+      <span>向下滚动</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
     </div>
   </section>
 
-  <!-- Philosophy -->
-  <section class="philosophy" id="philosophy">
-    <div class="philosophy-deco left">I</div>
-    <div class="philosophy-deco right">I</div>
-    <div class="philosophy-inner">
-      <p class="philosophy-quote reveal">世界本喧<br>此处冰点</p>
-      <p class="philosophy-quote-en reveal reveal-delay-1">
-        The world is loud.<br>Here, it freezes into silence.
+  <section class="brand-story-section">
+    <div class="brand-story-inner">
+      <p class="section-label reveal">Our Story</p>
+      <h2 class="reveal">品牌故事</h2>
+      <p class="reveal reveal-delay-1">
+        InIce 诞生于对「静」的执念。我们相信，在信息爆炸的时代，人最需要的是一个可以让思绪暂停的角落。
+      </p>
+      <p class="reveal reveal-delay-1">
+        每一支线香都来自喜马拉雅山脚下的手工工坊，选用最天然的草本与树脂，不添加任何化学香精。从采集原料到成品包装，每一步都由匠人亲手完成。
+      </p>
+      <p class="reveal reveal-delay-1">
+        我们不只是做香，我们在做一种「仪式」——点燃的那一刻，世界安静下来，只剩下你和这缕烟。
       </p>
     </div>
   </section>
 
-  <!-- Series Preview -->
-  <section class="series-preview" id="series">
-    <div class="series-inner">
-      <div class="section-header">
-        <p class="section-label reveal">Collections</p>
-        <h2 class="section-title reveal reveal-delay-1">产品系列</h2>
-        <p class="section-title-en reveal reveal-delay-2">Our Collections</p>
-        <div class="divider reveal reveal-delay-2"></div>
-      </div>
-      <div class="series-grid">
-        <a href="./products.html?series=chakras" class="series-card reveal">
-          <img src="images/04-sandalwood.png" alt="七脉轮系列">
-          <div class="series-card-content">
-            <p class="series-card-label">Seven Chakras</p>
-            <h3 class="series-card-title">七脉轮系列</h3>
-            <p class="series-card-title-en">Energy Healing Collection</p>
-          </div>
+  <section class="series-entry-section">
+    <div class="series-entry-inner">
+      <p class="section-label reveal">Collections</p>
+      <h2 class="reveal">产品系列</h2>
+      <p class="sub reveal reveal-delay-1">从七脉轮到五行，找到属于你的那一支</p>
+
+      <div class="series-grid reveal reveal-delay-2">
+        <a href="./chakras.html" class="series-card">
+          <p class="series-card-name">七脉轮系列</p>
+          <p class="series-card-name-en">Seven Chakras</p>
+          <p class="series-card-desc">从海底轮到顶轮，十款线香对应人体七个能量中心，助你平衡身心，找回内在的宁静。</p>
+          <p class="series-card-count">10 款产品</p>
         </a>
-        <a href="./products.html?series=elements" class="series-card reveal reveal-delay-1">
-          <img src="images/06-dorjee.png" alt="五行系列">
-          <div class="series-card-content">
-            <p class="series-card-label">Five Elements</p>
-            <h3 class="series-card-title">五行系列</h3>
-            <p class="series-card-title-en">Wu Xing Collection</p>
-          </div>
+        <a href="./elements.html" class="series-card">
+          <p class="series-card-name">五行系列</p>
+          <p class="series-card-name-en">Five Elements</p>
+          <p class="series-card-desc">木、火、土、金、水——五款线香对应五行能量，调和气场，顺应自然节律。</p>
+          <p class="series-card-count">5 款产品</p>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- Featured -->
-  <section class="featured" id="featured">
-    <div class="featured-inner">
-      <div class="section-header">
-        <p class="section-label reveal">Featured</p>
-        <h2 class="section-title reveal reveal-delay-1">精选产品</h2>
-        <p class="section-title-en reveal reveal-delay-2">Featured Products</p>
-        <div class="divider reveal reveal-delay-2"></div>
-      </div>
-      <div class="featured-grid">
-        <div class="featured-item reveal" onclick="openLightbox('images/04-sandalwood.png')">
-          <img src="images/04-sandalwood.png" alt="檀香">
-          <h4>心轮 · 檀香</h4>
-          <p>Sandalwood</p>
-        </div>
-        <div class="featured-item reveal reveal-delay-1" onclick="openLightbox('images/01-frankincense.png')">
-          <img src="images/01-frankincense.png" alt="乳香">
-          <h4>顶轮 · 乳香</h4>
-          <p>Frankincense</p>
-        </div>
-        <div class="featured-item reveal reveal-delay-2" onclick="openLightbox('images/09-devdar.png')">
-          <img src="images/09-devdar.png" alt="杜松">
-          <h4>脐轮 · 杜松</h4>
-          <p>Devdar</p>
-        </div>
-        <div class="featured-item reveal reveal-delay-3" onclick="openLightbox('images/06-dorjee.png')">
-          <img src="images/06-dorjee.png" alt="多吉">
-          <h4>金 · 多吉</h4>
-          <p>Dorjee</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="cta-section">
-    <div class="section-header">
-      <p class="section-label reveal">Connect</p>
-      <h2 class="section-title reveal reveal-delay-1">探索更多</h2>
-      <p class="section-title-en reveal reveal-delay-2">Explore More</p>
-      <div class="divider reveal reveal-delay-2"></div>
-    </div>
-    <a href="./products.html" class="btn btn-primary reveal reveal-delay-3">浏览全部产品</a>
-  </section>
-
-  <!-- Footer -->
   <footer>
     <p class="footer-brand">In<span style="font-style:italic">I</span>ce</p>
     <p class="footer-slogan">世界本喧，此处冰点</p>

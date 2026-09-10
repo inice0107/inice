@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>五行系列 — InIce</title>
+  <meta name="description" content="InIce 五行草本线香系列，木火土金水">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;600;700&family=Noto+Sans+SC:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .page-header {
+      min-height: 45vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8rem 2rem 4rem;
+      background: var(--bg-cream);
+    }
+    .page-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      color: var(--text-primary);
+    }
+    .page-header p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--text-muted);
+      margin-top: 1rem;
+      letter-spacing: 0.05em;
+    }
+    .elements-section {
+      padding: 4rem 2rem 10rem;
+      background: var(--bg-white);
+    }
+    .elements-inner {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .section-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    .element-product {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 1.5rem 2rem;
+      border-bottom: 1px solid var(--border-light);
+      text-decoration: none;
+      color: inherit;
+      transition: all var(--transition-fast);
+      background: transparent;
+    }
+    .element-product:hover {
+      background: var(--bg-cream);
+      padding-left: 2.5rem;
+    }
+    .element-symbol {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.4rem;
+      color: var(--accent-gold);
+      min-width: 36px;
+      text-align: center;
+    }
+    .element-info {
+      flex: 1;
+    }
+    .element-name {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.05rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      color: var(--text-primary);
+      margin-bottom: 0.2rem;
+    }
+    .element-name-en {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.85rem;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    .element-tag {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      color: var(--accent-gold);
+      text-transform: uppercase;
+      margin-top: 0.3rem;
+    }
+    .element-arrow {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      transition: transform 0.3s, color 0.3s;
+    }
+    .element-product:hover .element-arrow {
+      transform: translateX(4px);
+      color: var(--text-primary);
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 3rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .back-link:hover { color: var(--text-primary); }
+    @media (max-width: 500px) {
+      .element-product { padding: 1.2rem 1rem; }
+      .element-product:hover { padding-left: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-transition"></div>
+  <div id="loading">
+    <div class="loading-content">
+      <div class="loading-brand">In<span style="font-style:italic">I</span>ce</div>
+      <div class="loading-line"></div>
+      <div class="loading-sub">世界本喧 · 此处冰点</div>
+    </div>
+  </div>
+
+  <nav id="navbar">
+    <a href="./index.html" class="nav-brand">In<span style="font-style:italic">I</span>ce</a>
+    <ul class="nav-links">
+      <li><a href="./index.html">首页</a></li>
+      <li><a href="./products.html">产品</a></li>
+      <li><a href="./about.html">关于</a></li>
+      <li><a href="./contact.html">联络</a></li>
+    </ul>
+    <button class="mobile-menu-btn" aria-label="菜单">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-menu">
+    <a href="./index.html">首页</a>
+    <a href="./products.html">产品</a>
+    <a href="./about.html">关于</a>
+    <a href="./contact.html">联络</a>
+  </div>
+
+  <section class="page-header">
+    <h1 class="reveal">五行系列</h1>
+    <p class="reveal reveal-delay-1">Five Elements · 5 Incenses</p>
+  </section>
+
+  <section class="elements-section">
+    <div class="elements-inner">
+      <a href="./products.html" class="back-link reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        返回系列选择
+      </a>
+
+      <p class="section-label reveal">Choose Your Element</p>
+
+      <a href="./product.html?p=naswa" class="element-product reveal reveal-delay-1">
+        <span class="element-symbol">木</span>
+        <div class="element-info">
+          <p class="element-name">那瓦</p>
+          <p class="element-name-en">Na Swa</p>
+          <p class="element-tag">Mu · 眉心轮 · 内观之香</p>
+        </div>
+        <span class="element-arrow">→</span>
+      </a>
+
+      <a href="./product.html?p=frankincense" class="element-product reveal reveal-delay-1">
+        <span class="element-symbol">火</span>
+        <div class="element-info">
+          <p class="element-name">乳香</p>
+          <p class="element-name-en">Frankincense</p>
+          <p class="element-tag">Huo · 顶轮 · 静心之香</p>
+        </div>
+        <span class="element-arrow">→</span>
+      </a>
+
+      <a href="./product.html?p=sandalwood" class="element-product reveal reveal-delay-1">
+        <span class="element-symbol">土</span>
+        <div class="element-info">
+          <p class="element-name">檀香</p>
+          <p class="element-name-en">Sandalwood</p>
+          <p class="element-tag">Tu · 心轮 · 流动之香</p>
+        </div>
+        <span class="element-arrow">→</span>
+      </a>
+
+      <a href="./product.html?p=dorjee" class="element-product reveal reveal-delay-1">
+        <span class="element-symbol">金</span>
+        <div class="element-info">
+          <p class="element-name">多吉</p>
+          <p class="element-name-en">Dorjee</p>
+          <p class="element-tag">Jin · 太阳神经丛 · 底气之香</p>
+        </div>
+        <span class="element-arrow">→</span>
+      </a>
+
+      <a href="./product.html?p=citronella" class="element-product reveal reveal-delay-1">
+        <span class="element-symbol">水</span>
+        <div class="element-info">
+          <p class="element-name">香茅</p>
+          <p class="element-name-en">Citronella</p>
+          <p class="element-tag">Shui · 喉轮 · 清言之香</p>
+        </div>
+        <span class="element-arrow">→</span>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <p class="footer-brand">In<span style="font-style:italic">I</span>ce</p>
+    <p class="footer-slogan">世界本喧，此处冰点</p>
+    <div class="footer-line"></div>
+    <div class="footer-links">
+      <a href="./index.html">首页</a>
+      <a href="./products.html">产品</a>
+      <a href="./about.html">关于</a>
+      <a href="./contact.html">联络</a>
+    </div>
+    <p class="footer-copy">© 2025 InIce. All rights reserved.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

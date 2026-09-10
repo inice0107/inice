@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>关于 — InIce</title>
-  <meta name="description" content="InIce 品牌故事与手工制香工艺">
+  <meta name="description" content="关于 InIce 品牌故事与手工制香工艺">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;600;700&family=Noto+Sans+SC:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
@@ -37,131 +37,104 @@
     }
 
     .story-section {
+      padding: 6rem 2rem;
       background: var(--bg-white);
-      padding: 8rem 2rem;
     }
     .story-inner {
-      max-width: 800px;
+      max-width: 640px;
       margin: 0 auto;
+    }
+    .section-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+      margin-bottom: 1.5rem;
       text-align: center;
     }
-    .story-text {
+    .story-inner h2 {
       font-family: 'Noto Serif SC', serif;
-      font-size: clamp(1rem, 2.5vw, 1.15rem);
+      font-size: 1.4rem;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      text-align: center;
+      margin-bottom: 2.5rem;
+      color: var(--text-primary);
+    }
+    .story-inner p {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 0.9rem;
       font-weight: 300;
       line-height: 2.4;
       color: var(--text-secondary);
-      letter-spacing: 0.08em;
-      margin-bottom: 2rem;
-    }
-    .story-text-en {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1rem, 2vw, 1.1rem);
-      font-weight: 300;
-      font-style: italic;
-      line-height: 2;
-      color: var(--text-muted);
-      letter-spacing: 0.02em;
+      letter-spacing: 0.05em;
+      margin-bottom: 1.5rem;
     }
 
     .craft-section {
+      padding: 6rem 2rem;
       background: var(--bg-cream);
-      padding: 8rem 2rem;
     }
     .craft-inner {
-      max-width: 1100px;
+      max-width: 800px;
       margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 6rem;
-      align-items: center;
     }
-    .craft-image {
-      position: relative;
-    }
-    .craft-image img {
-      width: 100%;
-      height: auto;
-      display: block;
-      filter: sepia(8%) saturate(92%);
-    }
-    .craft-image::after {
-      content: '';
-      position: absolute;
-      inset: 1.5rem;
-      border: 1px solid var(--accent-gold);
-      opacity: 0.3;
-      pointer-events: none;
-    }
-    .craft-text h3 {
+    .craft-inner h2 {
       font-family: 'Noto Serif SC', serif;
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       font-weight: 400;
       letter-spacing: 0.15em;
-      margin-bottom: 0.5rem;
+      text-align: center;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
     }
-    .craft-text .subtitle-en {
+    .craft-inner .sub {
       font-family: 'Cormorant Garamond', serif;
       font-size: 1rem;
-      font-weight: 300;
       font-style: italic;
       color: var(--text-muted);
-      margin-bottom: 2rem;
-      letter-spacing: 0.05em;
-    }
-    .craft-text p {
-      font-size: 0.95rem;
-      line-height: 2.2;
-      color: var(--text-secondary);
-      margin-bottom: 1.5rem;
-      letter-spacing: 0.05em;
-    }
-    .craft-text p:last-child { margin-bottom: 0; }
-
-    .origin-section {
-      background: var(--bg-white);
-      padding: 8rem 2rem;
       text-align: center;
+      margin-bottom: 3rem;
     }
-    .origin-inner { max-width: 900px; margin: 0 auto; }
-    .origin-grid {
+    .craft-steps {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 3rem;
-      margin-top: 4rem;
+      gap: 2rem;
     }
-    .origin-item {
-      padding: 2rem;
+    .craft-step {
+      text-align: center;
+      padding: 2rem 1.5rem;
+      background: var(--bg-white);
+      border: 1px solid var(--border-light);
     }
-    .origin-item .number {
+    .craft-step-num {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 2.5rem;
-      font-weight: 300;
+      font-size: 2rem;
       color: var(--accent-gold);
       margin-bottom: 1rem;
     }
-    .origin-item h4 {
+    .craft-step h3 {
       font-family: 'Noto Serif SC', serif;
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: 400;
       letter-spacing: 0.1em;
       margin-bottom: 0.8rem;
+      color: var(--text-primary);
     }
-    .origin-item p {
-      font-size: 0.9rem;
-      line-height: 1.8;
+    .craft-step p {
+      font-size: 0.8rem;
       color: var(--text-secondary);
+      line-height: 1.8;
+      letter-spacing: 0.05em;
     }
-
-    @media (max-width: 768px) {
-      .craft-inner { grid-template-columns: 1fr; gap: 3rem; }
-      .origin-grid { grid-template-columns: 1fr; }
+    @media (max-width: 700px) {
+      .craft-steps { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
   <div class="page-transition"></div>
-
   <div id="loading">
     <div class="loading-content">
       <div class="loading-brand">In<span style="font-style:italic">I</span>ce</div>
@@ -190,68 +163,50 @@
   </div>
 
   <section class="page-header">
-    <h1 class="reveal">关于 InIce</h1>
-    <p class="reveal reveal-delay-1">About Us</p>
+    <h1 class="reveal">关于</h1>
+    <p class="reveal reveal-delay-1">About InIce</p>
   </section>
 
-  <section class="story-section" id="story">
+  <section class="story-section">
     <div class="story-inner">
-      <div class="section-header">
-        <p class="section-label reveal">Brand Story</p>
-        <h2 class="section-title reveal reveal-delay-1">品牌故事</h2>
-        <p class="section-title-en reveal reveal-delay-2">Our Story</p>
-        <div class="divider reveal reveal-delay-2"></div>
-      </div>
-      <p class="story-text reveal reveal-delay-3">
-        InIce，以喜马拉雅山麓的古老草本智慧为根基，将七脉轮的能量疗愈与五行平衡之道融入每一支线香。我们相信，香气是通往内在的桥梁——当一缕烟升起，外界的喧嚣便如潮水般退去，只剩下此刻的宁静与觉知。
+      <p class="section-label reveal">Our Story</p>
+      <h2 class="reveal">品牌故事</h2>
+      <p class="reveal reveal-delay-1">
+        InIce 诞生于对「静」的执念。我们相信，在信息爆炸的时代，人最需要的是一个可以让思绪暂停的角落。
       </p>
-      <p class="story-text-en reveal reveal-delay-4">
-        Rooted in the ancient herbal wisdom of the Himalayan foothills, InIce weaves the energy healing of the seven chakras and the balance of the five elements into every incense stick. We believe fragrance is a bridge to the inner self — as the smoke rises, the noise of the world recedes like a tide, leaving only presence and stillness.
+      <p class="reveal reveal-delay-1">
+        品牌的名字取自 "In Ice"——在冰里。冰是水的另一种形态，透明、安静、不流动，却蕴含着最深的能量。我们希望每一支线香都能像冰一样，让你在点燃它的那一刻，世界瞬间安静下来。
+      </p>
+      <p class="reveal reveal-delay-1">
+        我们的线香来自喜马拉雅山脚下的尼泊尔手工工坊，选用最天然的草本与树脂，不添加任何化学香精。从采集原料到成品包装，每一步都由匠人亲手完成。
+      </p>
+      <p class="reveal reveal-delay-1">
+        "世界本喧，此处冰点"——这是我们的信念。无论外面多吵，只要你点燃一支 InIce，这里就是你的冰点。
       </p>
     </div>
   </section>
 
-  <section class="craft-section" id="craft">
+  <section class="craft-section">
     <div class="craft-inner">
-      <div class="craft-image reveal">
-        <img src="images/02-myrrh.png" alt="手工制香">
-      </div>
-      <div class="craft-text">
-        <h3 class="reveal">手工制香</h3>
-        <p class="subtitle-en reveal reveal-delay-1">Handcrafted with Intention</p>
-        <p class="reveal reveal-delay-2">
-          每一支线香皆源自尼泊尔加德满都谷地的传统手工坊。选用喜马拉雅山区野生草本与天然树脂，依循千年阿育吠陀配方，以手工揉制、自然风干，保留草本纤维的原始肌理。
-        </p>
-        <p class="reveal reveal-delay-3">
-          Each stick is born in a traditional workshop in Nepal's Kathmandu Valley. Wild Himalayan herbs and natural resins are blended according to ancient Ayurvedic recipes, hand-rolled and sun-dried to preserve the raw texture of the fibers.
-        </p>
-      </div>
-    </div>
-  </section>
+      <p class="section-label reveal">Craftsmanship</p>
+      <h2 class="reveal">手工制香工艺</h2>
+      <p class="sub reveal reveal-delay-1">从原料到成品，每一支都经过时间的沉淀</p>
 
-  <section class="origin-section" id="origin">
-    <div class="origin-inner">
-      <div class="section-header">
-        <p class="section-label reveal">Origin</p>
-        <h2 class="section-title reveal reveal-delay-1">原料来源</h2>
-        <p class="section-title-en reveal reveal-delay-2">Our Ingredients</p>
-        <div class="divider reveal reveal-delay-2"></div>
-      </div>
-      <div class="origin-grid">
-        <div class="origin-item reveal">
-          <p class="number">01</p>
-          <h4>喜马拉雅野生草本</h4>
-          <p>采自海拔3000米以上的纯净高山地带，远离污染，保留最原始的自然能量。</p>
+      <div class="craft-steps reveal reveal-delay-2">
+        <div class="craft-step">
+          <div class="craft-step-num">01</div>
+          <h3>采集原料</h3>
+          <p>从喜马拉雅山脉海拔3000米以上的高原地区，手工采集天然草本、树脂与木材。每一种原料都经过严格筛选，确保纯度与品质。</p>
         </div>
-        <div class="origin-item reveal reveal-delay-1">
-          <p class="number">02</p>
-          <h4>天然树脂</h4>
-          <p>乳香、没药等珍稀树脂，经由传统方式采集，不伤害树木生命。</p>
+        <div class="craft-step">
+          <div class="craft-step-num">02</div>
+          <h3>古法研磨</h3>
+          <p>采用传统石磨手工研磨，将原料研磨成细腻的粉末。不添加任何化学粘合剂，只用天然楠木粉作为粘合基质。</p>
         </div>
-        <div class="origin-item reveal reveal-delay-2">
-          <p class="number">03</p>
-          <h4>阿育吠陀配方</h4>
-          <p>传承千年的草本配比智慧，每一种成分都有其独特的能量属性。</p>
+        <div class="craft-step">
+          <div class="craft-step-num">03</div>
+          <h3>手工成型</h3>
+          <p>由经验丰富的匠人手工搓制每一支线香，确保粗细均匀、密度适中。成型后自然阴干30天，让香气充分沉淀。</p>
         </div>
       </div>
     </div>

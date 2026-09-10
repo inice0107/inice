@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>七脉轮系列 — InIce</title>
+  <meta name="description" content="InIce 七脉轮草本线香系列，从海底轮到顶轮">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;600;700&family=Noto+Sans+SC:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .page-header {
+      min-height: 45vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8rem 2rem 4rem;
+      background: var(--bg-cream);
+    }
+    .page-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      color: var(--text-primary);
+    }
+    .page-header p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--text-muted);
+      margin-top: 1rem;
+      letter-spacing: 0.05em;
+    }
+
+    .chakra-list-section {
+      padding: 4rem 2rem 10rem;
+      background: var(--bg-white);
+    }
+    .chakra-list-inner {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .section-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .chakra-product {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 1.5rem 2rem;
+      border-bottom: 1px solid var(--border-light);
+      text-decoration: none;
+      color: inherit;
+      transition: all var(--transition-fast);
+      background: transparent;
+    }
+    .chakra-product:hover {
+      background: var(--bg-cream);
+      padding-left: 2.5rem;
+    }
+    .chakra-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.8rem;
+      color: var(--accent-gold);
+      letter-spacing: 0.1em;
+      min-width: 30px;
+    }
+    .chakra-info {
+      flex: 1;
+    }
+    .chakra-name {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.05rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      color: var(--text-primary);
+      margin-bottom: 0.2rem;
+    }
+    .chakra-name-en {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.85rem;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    .chakra-tag {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      color: var(--accent-gold);
+      text-transform: uppercase;
+      margin-top: 0.3rem;
+    }
+    .chakra-arrow {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      transition: transform 0.3s, color 0.3s;
+    }
+    .chakra-product:hover .chakra-arrow {
+      transform: translateX(4px);
+      color: var(--text-primary);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 3rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .back-link:hover { color: var(--text-primary); }
+
+    @media (max-width: 500px) {
+      .chakra-product { padding: 1.2rem 1rem; }
+      .chakra-product:hover { padding-left: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-transition"></div>
+  <div id="loading">
+    <div class="loading-content">
+      <div class="loading-brand">In<span style="font-style:italic">I</span>ce</div>
+      <div class="loading-line"></div>
+      <div class="loading-sub">世界本喧 · 此处冰点</div>
+    </div>
+  </div>
+
+  <nav id="navbar">
+    <a href="./index.html" class="nav-brand">In<span style="font-style:italic">I</span>ce</a>
+    <ul class="nav-links">
+      <li><a href="./index.html">首页</a></li>
+      <li><a href="./products.html">产品</a></li>
+      <li><a href="./about.html">关于</a></li>
+      <li><a href="./contact.html">联络</a></li>
+    </ul>
+    <button class="mobile-menu-btn" aria-label="菜单">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-menu">
+    <a href="./index.html">首页</a>
+    <a href="./products.html">产品</a>
+    <a href="./about.html">关于</a>
+    <a href="./contact.html">联络</a>
+  </div>
+
+  <section class="page-header">
+    <h1 class="reveal">七脉轮系列</h1>
+    <p class="reveal reveal-delay-1">Seven Chakras · 10 Incenses</p>
+  </section>
+
+  <section class="chakra-list-section">
+    <div class="chakra-list-inner">
+      <a href="./products.html" class="back-link reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        返回系列选择
+      </a>
+
+      <p class="section-label reveal">Choose Your Incense</p>
+
+      <a href="./product.html?p=frankincense" class="chakra-product reveal reveal-delay-1">
+        <span class="chakra-num">01</span>
+        <div class="chakra-info">
+          <p class="chakra-name">乳香</p>
+          <p class="chakra-name-en">Frankincense</p>
+          <p class="chakra-tag">Sahasrara · 顶轮 / 火 · 静心之香</p>
+        </div>
+        <span class="chakra-arrow">→</span>
+      </a>
+
+      <a href="./product.html?p=myrrh" class="chakra-product reveal reveal-delay-1">
+        <span class="chakra-num">02</span>
+        <div class="chakra-info">
+          <p class="chakra-name">没药</p>
+          <p class="chakra-name-en">Myrrh</p>
+          <p class="chakra-tag">Crown · 顶轮 · 沉淀之香</p>
+        </div>
+        <span class="chakra-arrow">→</span>
+      </a>
+
+      <a href="./product.html?p=naswa" class="chakra-product reveal reveal-delay-1">
+        <span class="chakra-num">03</span>
+        <div class="chakra-info">
+          <p class="chakra-name">那瓦</p>
+          <p class="chakra-name-en">Na Swa</p>
+          <p class="chakra-tag">Mu · 木 / 眉心轮 · 内观之香</p>
+        </div>
+        <span class="chakra-arrow">→</span>
+      </a>
+
+      <a href="./product.html?p=sandalwood" class="chakra-product reveal reveal-delay-1">
+        <span class="chakra-num">04</span>
+        <div class="chakra-info">
+          <p class="chakra-name">檀香</p>
+          <p class="chakra-name-en">Sandalwood</p>
+          <p class="chakra-tag">Anahata · 心轮 / 土 · 流动之香</p>
+        </div>
+        <span class="chakra-arrow">→</span>
+      </a>
+
+      <a href="./product.html?p=nagchampa" class="chakra-product reveal reveal-delay-1">
+        <span class="chakra-num">05</span>
+        <div class="chakra-info">
+          <p class="chakra-name">金香木</p>
+          <p class="chakra-name-en">Nag Champa</p>
+          <p class="chakra-tag">Svadhisthana · 生殖轮 / 心轮 · 被爱之香</p>
+        </div>
+        <span class="chakra-arrow">→</span>
+      </a>
+
+      <a href="./product.html?p=dorjee" class="chakra-product reveal reveal-delay-1">
+        <span class="chakra-num">06</span>
+        <div class="chakra-info">
+          <p class="chakra-name">多吉</p>
+          <p class="chakra-name-en">Dorjee</p>
+          <p class="chakra-tag">Jin · 金 / 太阳神经丛 · 底气之香</p>
+        </div>
+        <span class="chakra-arrow">→</span>
+      </a>
+
+      <a href="./product.html?p=citronella" class="chakra-product reveal reveal-delay-1">
+        <span class="chakra-num">07</span>
+        <div class="chakra-info">
+          <p class="chakra-name">香茅</p>
+          <p class="chakra-name-en">Citronella</p>
+          <p class="chakra-tag">Shui · 水 / 喉轮 · 清言之香</p>
+        </div>
+        <span class="chakra-arrow">→</span>
+      </a>
+
+      <a href="./product.html?p=austha" class="chakra-product reveal reveal-delay-1">
+        <span class="chakra-num">08</span>
+        <div class="chakra-info">
+          <p class="chakra-name">奥斯塔</p>
+          <p class="chakra-name-en">Austha Suganda</p>
+          <p class="chakra-tag">Ajna · 眉心轮 / 太阳神经丛 · 自我之香</p>
+        </div>
+        <span class="chakra-arrow">→</span>
+      </a>
+
+      <a href="./product.html?p=devdar" class="chakra-product reveal reveal-delay-1">
+        <span class="chakra-num">09</span>
+        <div class="chakra-info">
+          <p class="chakra-name">神木</p>
+          <p class="chakra-name-en">Devdar</p>
+          <p class="chakra-tag">Muladhara · 海底轮 · 扎根之香</p>
+        </div>
+        <span class="chakra-arrow">→</span>
+      </a>
+
+      <a href="./product.html?p=cedar" class="chakra-product reveal reveal-delay-1">
+        <span class="chakra-num">10</span>
+        <div class="chakra-info">
+          <p class="chakra-name">喜马拉雅雪松</p>
+          <p class="chakra-name-en">Himalayan Cedar</p>
+          <p class="chakra-tag">Muladhara · 海底轮 · 沉稳之香</p>
+        </div>
+        <span class="chakra-arrow">→</span>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <p class="footer-brand">In<span style="font-style:italic">I</span>ce</p>
+    <p class="footer-slogan">世界本喧，此处冰点</p>
+    <div class="footer-line"></div>
+    <div class="footer-links">
+      <a href="./index.html">首页</a>
+      <a href="./products.html">产品</a>
+      <a href="./about.html">关于</a>
+      <a href="./contact.html">联络</a>
+    </div>
+    <p class="footer-copy">© 2025 InIce. All rights reserved.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
