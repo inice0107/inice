@@ -43,8 +43,16 @@ if (revealElements.length) {
         revealObserver.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-  revealElements.forEach(el => revealObserver.observe(el));
+  }, { threshold: 0.05, rootMargin: '50px 0px 50px 0px' });
+  revealElements.forEach(el => {
+    revealObserver.observe(el);
+    // Immediately show elements already in viewport
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      el.classList.add('visible');
+      revealObserver.unobserve(el);
+    }
+  });
 }
 
 // Lightbox
