@@ -36,7 +36,6 @@
       letter-spacing: 0.05em;
     }
 
-    /* Filter */
     .filter-bar {
       display: flex;
       justify-content: center;
@@ -62,7 +61,6 @@
       border-color: var(--text-primary);
     }
 
-    /* Product Grid */
     .products-section {
       background: var(--bg-white);
       padding: 5rem 2rem 8rem;
@@ -126,13 +124,13 @@
       padding: 1.8rem;
       text-align: center;
     }
-    .product-series-tag {
+    .product-chakra-tag {
       font-family: 'Cormorant Garamond', serif;
       font-size: 0.65rem;
       letter-spacing: 0.3em;
       text-transform: uppercase;
       color: var(--accent-gold);
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.4rem;
     }
     .product-name {
       font-family: 'Noto Serif SC', serif;
@@ -147,39 +145,189 @@
       font-size: 0.9rem;
       font-style: italic;
       color: var(--text-muted);
-      margin-bottom: 0.8rem;
+      margin-bottom: 0.6rem;
     }
-    .product-meta {
+    .product-note-preview {
       font-size: 0.8rem;
       color: var(--text-secondary);
-      letter-spacing: 0.05em;
-      margin-bottom: 1.2rem;
+      line-height: 1.7;
+      margin-bottom: 1rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
-    .product-buy {
-      display: inline-flex;
-      align-items: center;
+    .product-actions {
+      display: flex;
       gap: 0.5rem;
-      padding: 0.7rem 2rem;
-      background: var(--text-primary);
-      color: var(--bg-cream);
-      text-decoration: none;
-      font-size: 0.75rem;
+      justify-content: center;
+    }
+    .product-btn {
+      padding: 0.6rem 1.2rem;
+      font-size: 0.7rem;
       letter-spacing: 0.1em;
       border: 1px solid var(--text-primary);
-      transition: all var(--transition-fast);
       cursor: pointer;
+      transition: all var(--transition-fast);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
     }
-    .product-buy:hover {
+    .product-btn-primary {
+      background: var(--text-primary);
+      color: var(--bg-cream);
+    }
+    .product-btn-primary:hover {
       background: transparent;
       color: var(--text-primary);
     }
-    .product-buy svg { width: 14px; height: 14px; }
+    .product-btn-ghost {
+      background: transparent;
+      color: var(--text-primary);
+    }
+    .product-btn-ghost:hover {
+      background: var(--text-primary);
+      color: var(--bg-cream);
+    }
+
+    /* Detail Modal */
+    .detail-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      background: rgba(247,243,236,0.95);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.4s ease, visibility 0.4s ease;
+    }
+    .detail-modal.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    .detail-modal-inner {
+      background: var(--bg-white);
+      border: 1px solid var(--border-light);
+      max-width: 800px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+    }
+    .detail-modal-close {
+      position: absolute;
+      top: 1rem; right: 1rem;
+      width: 40px; height: 40px;
+      background: none;
+      border: 1px solid var(--border-light);
+      font-size: 1.5rem;
+      color: var(--text-primary);
+      cursor: pointer;
+      z-index: 10;
+      transition: all 0.3s;
+    }
+    .detail-modal-close:hover {
+      background: var(--text-primary);
+      color: var(--bg-cream);
+    }
+    .detail-modal-image {
+      position: relative;
+    }
+    .detail-modal-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .detail-modal-content {
+      padding: 3rem;
+    }
+    .detail-chakra {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+      margin-bottom: 0.5rem;
+    }
+    .detail-name {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.6rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.2rem;
+    }
+    .detail-name-en {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+    .detail-section {
+      margin-bottom: 1.8rem;
+    }
+    .detail-section-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+      margin-bottom: 0.6rem;
+    }
+    .detail-note {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 0.9rem;
+      line-height: 2;
+      color: var(--text-secondary);
+      letter-spacing: 0.05em;
+    }
+    .detail-ingredients {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .detail-ingredient {
+      padding: 0.4rem 0.8rem;
+      background: var(--bg-cream);
+      border: 1px solid var(--border-light);
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+      color: var(--text-secondary);
+    }
+    .detail-buy {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.8rem 2rem;
+      background: var(--text-primary);
+      color: var(--bg-cream);
+      text-decoration: none;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      border: 1px solid var(--text-primary);
+      transition: all var(--transition-fast);
+      margin-top: 1rem;
+    }
+    .detail-buy:hover {
+      background: transparent;
+      color: var(--text-primary);
+    }
 
     @media (max-width: 900px) {
       .products-grid { grid-template-columns: repeat(2, 1fr); }
+      .detail-modal-inner { grid-template-columns: 1fr; }
+      .detail-modal-image { height: 300px; }
     }
     @media (max-width: 600px) {
       .products-grid { grid-template-columns: 1fr; }
+      .detail-modal-content { padding: 2rem; }
     }
   </style>
 </head>
@@ -197,6 +345,33 @@
   <div class="lightbox" id="lightbox">
     <button class="lightbox-close">&times;</button>
     <img id="lightbox-img" src="" alt="">
+  </div>
+
+  <!-- Detail Modal -->
+  <div class="detail-modal" id="detailModal">
+    <div class="detail-modal-inner">
+      <button class="detail-modal-close" onclick="closeDetailModal()">&times;</button>
+      <div class="detail-modal-image">
+        <img id="detail-img" src="" alt="">
+      </div>
+      <div class="detail-modal-content">
+        <p class="detail-chakra" id="detail-chakra"></p>
+        <h3 class="detail-name" id="detail-name"></h3>
+        <p class="detail-name-en" id="detail-name-en"></p>
+        <div class="detail-section">
+          <p class="detail-section-label">Perfumer's Note · 用香手记</p>
+          <p class="detail-note" id="detail-note"></p>
+        </div>
+        <div class="detail-section">
+          <p class="detail-section-label">Ingredients · 原料</p>
+          <div class="detail-ingredients" id="detail-ingredients"></div>
+        </div>
+        <a href="https://www.xiaohongshu.com/user/profile/26537117029" target="_blank" class="detail-buy">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+          前往小红书购买
+        </a>
+      </div>
+    </div>
   </div>
 
   <nav id="navbar">
@@ -232,122 +407,8 @@
       </div>
 
       <div class="products-grid" id="products-grid">
-        <!-- 七脉轮系列 -->
-        <div class="product-card reveal" data-series="chakras">
-          <div class="product-image" onclick="openLightbox('images/02-myrrh.png')">
-            <img src="images/02-myrrh.png" alt="没药">
-            <button class="product-zoom" onclick="event.stopPropagation(); openLightbox('images/02-myrrh.png')">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
-            </button>
-          </div>
-          <div class="product-info">
-            <p class="product-series-tag">Muladhara · 海底轮</p>
-            <h3 class="product-name">没药</h3>
-            <p class="product-name-en">Myrrh</p>
-            <p class="product-meta">Grounding · Security</p>
-            <a href="https://www.xiaohongshu.com/user/profile/26537117029" target="_blank" class="product-buy">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-              前往购买
-            </a>
-          </div>
-        </div>
-
-        <div class="product-card reveal reveal-delay-1" data-series="chakras">
-          <div class="product-image" onclick="openLightbox('images/05-nag-champa.png')">
-            <img src="images/05-nag-champa.png" alt="黄兰">
-            <button class="product-zoom" onclick="event.stopPropagation(); openLightbox('images/05-nag-champa.png')">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
-            </button>
-          </div>
-          <div class="product-info">
-            <p class="product-series-tag">Svadhisthana · 生殖轮</p>
-            <h3 class="product-name">黄兰</h3>
-            <p class="product-name-en">Nag Champa</p>
-            <p class="product-meta">Creativity · Flow</p>
-            <a href="https://www.xiaohongshu.com/user/profile/26537117029" target="_blank" class="product-buy">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-              前往购买
-            </a>
-          </div>
-        </div>
-
-        <div class="product-card reveal reveal-delay-2" data-series="chakras">
-          <div class="product-image" onclick="openLightbox('images/09-devdar.png')">
-            <img src="images/09-devdar.png" alt="杜松">
-            <button class="product-zoom" onclick="event.stopPropagation(); openLightbox('images/09-devdar.png')">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
-            </button>
-          </div>
-          <div class="product-info">
-            <p class="product-series-tag">Manipura · 脐轮</p>
-            <h3 class="product-name">杜松</h3>
-            <p class="product-name-en">Devdar</p>
-            <p class="product-meta">Willpower · Confidence</p>
-            <a href="https://www.xiaohongshu.com/user/profile/26537117029" target="_blank" class="product-buy">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-              前往购买
-            </a>
-          </div>
-        </div>
-
-        <div class="product-card reveal" data-series="chakras elements">
-          <div class="product-image" onclick="openLightbox('images/04-sandalwood.png')">
-            <img src="images/04-sandalwood.png" alt="檀香">
-            <button class="product-zoom" onclick="event.stopPropagation(); openLightbox('images/04-sandalwood.png')">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
-            </button>
-          </div>
-          <div class="product-info">
-            <p class="product-series-tag">Anahata · 心轮 / 土</p>
-            <h3 class="product-name">檀香</h3>
-            <p class="product-name-en">Sandalwood</p>
-            <p class="product-meta">Love · Compassion</p>
-            <a href="https://www.xiaohongshu.com/user/profile/26537117029" target="_blank" class="product-buy">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-              前往购买
-            </a>
-          </div>
-        </div>
-
-        <div class="product-card reveal reveal-delay-1" data-series="chakras">
-          <div class="product-image" onclick="openLightbox('images/10-himalayan-cedar.png')">
-            <img src="images/10-himalayan-cedar.png" alt="雪松">
-            <button class="product-zoom" onclick="event.stopPropagation(); openLightbox('images/10-himalayan-cedar.png')">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
-            </button>
-          </div>
-          <div class="product-info">
-            <p class="product-series-tag">Vishuddha · 喉轮</p>
-            <h3 class="product-name">雪松</h3>
-            <p class="product-name-en">Himalayan Cedar</p>
-            <p class="product-meta">Expression · Truth</p>
-            <a href="https://www.xiaohongshu.com/user/profile/26537117029" target="_blank" class="product-buy">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-              前往购买
-            </a>
-          </div>
-        </div>
-
-        <div class="product-card reveal reveal-delay-2" data-series="chakras">
-          <div class="product-image" onclick="openLightbox('images/08-austha-suganda.png')">
-            <img src="images/08-austha-suganda.png" alt="苏甘达">
-            <button class="product-zoom" onclick="event.stopPropagation(); openLightbox('images/08-austha-suganda.png')">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
-            </button>
-          </div>
-          <div class="product-info">
-            <p class="product-series-tag">Ajna · 眉心轮</p>
-            <h3 class="product-name">苏甘达</h3>
-            <p class="product-name-en">Austha Suganda</p>
-            <p class="product-meta">Intuition · Insight</p>
-            <a href="https://www.xiaohongshu.com/user/profile/26537117029" target="_blank" class="product-buy">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-              前往购买
-            </a>
-          </div>
-        </div>
-
-        <div class="product-card reveal" data-series="chakras elements">
+        <!-- 01 乳香 -->
+        <div class="product-card reveal" data-series="chakras elements" data-product="frankincense">
           <div class="product-image" onclick="openLightbox('images/01-frankincense.png')">
             <img src="images/01-frankincense.png" alt="乳香">
             <button class="product-zoom" onclick="event.stopPropagation(); openLightbox('images/01-frankincense.png')">
@@ -355,38 +416,39 @@
             </button>
           </div>
           <div class="product-info">
-            <p class="product-series-tag">Sahasrara · 顶轮 / 火</p>
+            <p class="product-chakra-tag">Sahasrara · 顶轮 / 火</p>
             <h3 class="product-name">乳香</h3>
             <p class="product-name-en">Frankincense</p>
-            <p class="product-meta">Spirit · Unity</p>
-            <a href="https://www.xiaohongshu.com/user/profile/26537117029" target="_blank" class="product-buy">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-              前往购买
-            </a>
+            <p class="product-note-preview">是教堂穹顶下那缕笔直的烟，圣经里也写：那是神明在低处驻足的样子。阿曼与也门的乳香树脂，木质里带一点淡果香……</p>
+            <div class="product-actions">
+              <button class="product-btn product-btn-ghost" onclick="openDetail('frankincense')">详情</button>
+              <a href="https://www.xiaohongshu.com/user/profile/26537117029" target="_blank" class="product-btn product-btn-primary">购买</a>
+            </div>
           </div>
         </div>
 
-        <!-- 五行系列 -->
-        <div class="product-card reveal reveal-delay-1" data-series="elements">
-          <div class="product-image" onclick="openLightbox('images/06-dorjee.png')">
-            <img src="images/06-dorjee.png" alt="多吉">
-            <button class="product-zoom" onclick="event.stopPropagation(); openLightbox('images/06-dorjee.png')">
+        <!-- 02 没药 -->
+        <div class="product-card reveal reveal-delay-1" data-series="chakras" data-product="myrrh">
+          <div class="product-image" onclick="openLightbox('images/02-myrrh.png')">
+            <img src="images/02-myrrh.png" alt="没药">
+            <button class="product-zoom" onclick="event.stopPropagation(); openLightbox('images/02-myrrh.png')">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
             </button>
           </div>
           <div class="product-info">
-            <p class="product-series-tag">Jin · 金</p>
-            <h3 class="product-name">多吉</h3>
-            <p class="product-name-en">Dorjee</p>
-            <p class="product-meta">金刚 · 坚韧</p>
-            <a href="https://www.xiaohongshu.com/user/profile/26537117029" target="_blank" class="product-buy">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-              前往购买
-            </a>
+            <p class="product-chakra-tag">Crown · 顶轮 · 沉淀之香</p>
+            <h3 class="product-name">没药</h3>
+            <p class="product-name-en">Myrrh</p>
+            <p class="product-note-preview">是旧木柜深处那包蜡纸裹着的深红褐色树脂，打开时扑面而来的温润与微苦——木乃伊裹身、寺庙开光，古人用它封存时间……</p>
+            <div class="product-actions">
+              <button class="product-btn product-btn-ghost" onclick="openDetail('myrrh')">详情</button>
+              <a href="https://www.xiaohongshu.com/user/profile/26537117029" target="_blank" class="product-btn product-btn-primary">购买</a>
+            </div>
           </div>
         </div>
 
-        <div class="product-card reveal reveal-delay-2" data-series="elements">
+        <!-- 03 那瓦 -->
+        <div class="product-card reveal reveal-delay-2" data-series="elements" data-product="naswa">
           <div class="product-image" onclick="openLightbox('images/03-na-swa.png')">
             <img src="images/03-na-swa.png" alt="那瓦">
             <button class="product-zoom" onclick="event.stopPropagation(); openLightbox('images/03-na-swa.png')">
@@ -394,18 +456,79 @@
             </button>
           </div>
           <div class="product-info">
-            <p class="product-series-tag">Mu · 木</p>
+            <p class="product-chakra-tag">Mu · 木 / 眉心轮 · 内观之香</p>
             <h3 class="product-name">那瓦</h3>
             <p class="product-name-en">Na Swa</p>
-            <p class="product-meta">森息 · 生长</p>
-            <a href="https://www.xiaohongshu.com/user/profile/26537117029" target="_blank" class="product-buy">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-              前往购买
-            </a>
+            <p class="product-note-preview">是高山草甸下过雨之后，甘松把根茎的苦香从土里顶出来，竹柏与娑罗双树的青气浮在上层……</p>
+            <div class="product-actions">
+              <button class="product-btn product-btn-ghost" onclick="openDetail('naswa')">详情</button>
+              <a href="https://www.xiaohongshu.com/user/profile/26537117029" target="_blank" class="product-btn product-btn-primary">购买</a>
+            </div>
           </div>
         </div>
 
-        <div class="product-card reveal" data-series="elements">
+        <!-- 04 檀香 -->
+        <div class="product-card reveal" data-series="chakras elements" data-product="sandalwood">
+          <div class="product-image" onclick="openLightbox('images/04-sandalwood.png')">
+            <img src="images/04-sandalwood.png" alt="檀香">
+            <button class="product-zoom" onclick="event.stopPropagation(); openLightbox('images/04-sandalwood.png')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+            </button>
+          </div>
+          <div class="product-info">
+            <p class="product-chakra-tag">Anahata · 心轮 / 土 · 流动之香</p>
+            <h3 class="product-name">檀香</h3>
+            <p class="product-name-en">Sandalwood</p>
+            <p class="product-note-preview">是老街尽头那家木匠铺，印度老山檀香的刨花落在地上，散出温厚的奶甜木香，茉莉与圣罗勒在中段落一点白……</p>
+            <div class="product-actions">
+              <button class="product-btn product-btn-ghost" onclick="openDetail('sandalwood')">详情</button>
+              <a href="https://www.xiaohongshu.com/user/profile/26537117029" target="_blank" class="product-btn product-btn-primary">购买</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 05 黄兰 -->
+        <div class="product-card reveal reveal-delay-1" data-series="chakras" data-product="nagchampa">
+          <div class="product-image" onclick="openLightbox('images/05-nag-champa.png')">
+            <img src="images/05-nag-champa.png" alt="黄兰">
+            <button class="product-zoom" onclick="event.stopPropagation(); openLightbox('images/05-nag-champa.png')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+            </button>
+          </div>
+          <div class="product-info">
+            <p class="product-chakra-tag">Svadhisthana · 生殖轮 / 心轮 · 被爱之香</p>
+            <h3 class="product-name">黄兰</h3>
+            <p class="product-name-en">Nag Champa</p>
+            <p class="product-note-preview">是寺庙墙角那株黄兰花开到最盛的午后，甜香被太阳晒得发暖，鸡蛋花的奶香落在石阶上……</p>
+            <div class="product-actions">
+              <button class="product-btn product-btn-ghost" onclick="openDetail('nagchampa')">详情</button>
+              <a href="https://www.xiaohongshu.com/user/profile/26537117029" target="_blank" class="product-btn product-btn-primary">购买</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 06 多吉 -->
+        <div class="product-card reveal reveal-delay-2" data-series="elements" data-product="dorjee">
+          <div class="product-image" onclick="openLightbox('images/06-dorjee.png')">
+            <img src="images/06-dorjee.png" alt="多吉">
+            <button class="product-zoom" onclick="event.stopPropagation(); openLightbox('images/06-dorjee.png')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+            </button>
+          </div>
+          <div class="product-info">
+            <p class="product-chakra-tag">Jin · 金 / 太阳神经丛 · 底气之香</p>
+            <h3 class="product-name">多吉</h3>
+            <p class="product-name-en">Dorjee</p>
+            <p class="product-note-preview">是藏地清晨的甜茶馆，丁香的辛、肉桂的暖在铜壶边碰出一点火星，缬草在底下稳稳托住……</p>
+            <div class="product-actions">
+              <button class="product-btn product-btn-ghost" onclick="openDetail('dorjee')">详情</button>
+              <a href="https://www.xiaohongshu.com/user/profile/26537117029" target="_blank" class="product-btn product-btn-primary">购买</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 07 香茅 -->
+        <div class="product-card reveal" data-series="elements" data-product="citronella">
           <div class="product-image" onclick="openLightbox('images/07-citronella.png')">
             <img src="images/07-citronella.png" alt="香茅">
             <button class="product-zoom" onclick="event.stopPropagation(); openLightbox('images/07-citronella.png')">
@@ -413,14 +536,74 @@
             </button>
           </div>
           <div class="product-info">
-            <p class="product-series-tag">Shui · 水</p>
+            <p class="product-chakra-tag">Shui · 水 / 喉轮 · 清言之香</p>
             <h3 class="product-name">香茅</h3>
             <p class="product-name-en">Citronella</p>
-            <p class="product-meta">清流 · 灵动</p>
-            <a href="https://www.xiaohongshu.com/user/profile/26537117029" target="_blank" class="product-buy">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-              前往购买
-            </a>
+            <p class="product-note-preview">是雨季来临前的傍晚，屋檐下挂着的香茅被风吹得一阵阵地凉。尼泊尔与斯里兰卡的香茅精油……</p>
+            <div class="product-actions">
+              <button class="product-btn product-btn-ghost" onclick="openDetail('citronella')">详情</button>
+              <a href="https://www.xiaohongshu.com/user/profile/26537117029" target="_blank" class="product-btn product-btn-primary">购买</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 08 奥斯塔 -->
+        <div class="product-card reveal reveal-delay-1" data-series="chakras" data-product="austha">
+          <div class="product-image" onclick="openLightbox('images/08-austha-suganda.png')">
+            <img src="images/08-austha-suganda.png" alt="奥斯塔">
+            <button class="product-zoom" onclick="event.stopPropagation(); openLightbox('images/08-austha-suganda.png')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+            </button>
+          </div>
+          <div class="product-info">
+            <p class="product-chakra-tag">Ajna · 眉心轮 / 太阳神经丛 · 自我之香</p>
+            <h3 class="product-name">奥斯塔</h3>
+            <p class="product-name-en">Austha Suganda</p>
+            <p class="product-note-preview">是番红花在温水里缓缓散开的那个黄昏，甜暖漫过整间屋子——古代价比黄金的香料……</p>
+            <div class="product-actions">
+              <button class="product-btn product-btn-ghost" onclick="openDetail('austha')">详情</button>
+              <a href="https://www.xiaohongshu.com/user/profile/26537117029" target="_blank" class="product-btn product-btn-primary">购买</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 09 神木 -->
+        <div class="product-card reveal reveal-delay-2" data-series="chakras" data-product="devdar">
+          <div class="product-image" onclick="openLightbox('images/09-devdar.png')">
+            <img src="images/09-devdar.png" alt="神木">
+            <button class="product-zoom" onclick="event.stopPropagation(); openLightbox('images/09-devdar.png')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+            </button>
+          </div>
+          <div class="product-info">
+            <p class="product-chakra-tag">Muladhara · 海底轮 · 扎根之香</p>
+            <h3 class="product-name">神木</h3>
+            <p class="product-name-en">Devdar</p>
+            <p class="product-note-preview">是喜马拉雅雪线之下那棵站了几百年的雪松，风穿过针叶时带下来的清冽木香……</p>
+            <div class="product-actions">
+              <button class="product-btn product-btn-ghost" onclick="openDetail('devdar')">详情</button>
+              <a href="https://www.xiaohongshu.com/user/profile/26537117029" target="_blank" class="product-btn product-btn-primary">购买</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 10 喜马拉雅雪松 -->
+        <div class="product-card reveal" data-series="chakras" data-product="cedar">
+          <div class="product-image" onclick="openLightbox('images/10-himalayan-cedar.png')">
+            <img src="images/10-himalayan-cedar.png" alt="喜马拉雅雪松">
+            <button class="product-zoom" onclick="event.stopPropagation(); openLightbox('images/10-himalayan-cedar.png')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+            </button>
+          </div>
+          <div class="product-info">
+            <p class="product-chakra-tag">Muladhara · 海底轮 · 沉稳之香</p>
+            <h3 class="product-name">喜马拉雅雪松</h3>
+            <p class="product-name-en">Himalayan Cedar</p>
+            <p class="product-note-preview">是登山者夜里借宿的山间木屋，炉膛里雪松燃出的干燥暖香，混着门外雪的气味……</p>
+            <div class="product-actions">
+              <button class="product-btn product-btn-ghost" onclick="openDetail('cedar')">详情</button>
+              <a href="https://www.xiaohongshu.com/user/profile/26537117029" target="_blank" class="product-btn product-btn-primary">购买</a>
+            </div>
           </div>
         </div>
       </div>
@@ -442,6 +625,119 @@
 
   <script src="js/main.js"></script>
   <script>
+    // Product data
+    const productData = {
+      frankincense: {
+        name: '乳香',
+        nameEn: 'Frankincense',
+        chakra: 'Sahasrara · 顶轮 / 火 · 静心之香',
+        image: 'images/01-frankincense.png',
+        note: '是教堂穹顶下那缕笔直的烟，圣经里也写：那是神明在低处驻足的样子。阿曼与也门的乳香树脂，木质里带一点淡果香，醇厚而肃穆——它没有甜，没有凉，只剩一种极薄的"在"。像午睡醒来窗帘透出的光，你还什么都没想，世界已经变轻了。留三十分钟，给不说话的自己。',
+        ingredients: ['阿曼乳香树脂', '也门乳香精油', '喜马拉雅天然草本']
+      },
+      myrrh: {
+        name: '没药',
+        nameEn: 'Myrrh',
+        chakra: 'Crown · 顶轮 · 沉淀之香',
+        image: 'images/02-myrrh.png',
+        note: '是旧木柜深处那包蜡纸裹着的深红褐色树脂，打开时扑面而来的温润与微苦——木乃伊裹身、寺庙开光，古人用它封存时间。阿曼与索马里的没药，气味不讨喜，却压得住场：苦在前，甘在后，像一封读到最后才读懂的信。每次闻，身体里某处都被轻轻按下。给容易想太多的你。',
+        ingredients: ['阿曼没药树脂', '索马里没药树脂', '没药精油']
+      },
+      naswa: {
+        name: '那瓦',
+        nameEn: 'Na Swa',
+        chakra: 'Mu · 木 / 眉心轮 · 内观之香',
+        image: 'images/03-na-swa.png',
+        note: '是高山草甸下过雨之后，甘松把根茎的苦香从土里顶出来，竹柏与娑罗双树的青气浮在上层，肉豆蔻与红花添一笔暖，没药在末尾收暗。七种草本——这不是一支香，是一座藏地的坛城。关上门，闭上眼，三十分钟后你会觉得自己是干净的。给特别疲倦、特别想"清零"的日子。',
+        ingredients: ['甘松', '竹柏', '娑罗双树', '肉豆蔻', '红花', '没药']
+      },
+      sandalwood: {
+        name: '檀香',
+        nameEn: 'Sandalwood',
+        chakra: 'Anahata · 心轮 / 土 · 流动之香',
+        image: 'images/04-sandalwood.png',
+        note: '是老街尽头那家木匠铺，印度老山檀香的刨花落在地上，散出温厚的奶甜木香，茉莉与圣罗勒在中段落一点白，雪松、肉豆蔻与小豆蔻收住尾韵。它像一位从不多言的师友——你说话时它不抢，你停下时它还在。也许你不需要答案，你需要一支香的安静。给深夜还在纠结选哪条路的人。',
+        ingredients: ['老山檀香', '茉莉', '圣罗勒', '雪松', '肉豆蔻', '小豆蔻']
+      },
+      nagchampa: {
+        name: '黄兰',
+        nameEn: 'Nag Champa',
+        chakra: 'Svadhisthana · 生殖轮 / 心轮 · 被爱之香',
+        image: 'images/05-nag-champa.png',
+        note: '是寺庙墙角那株黄兰花开到最盛的午后，甜香被太阳晒得发暖，鸡蛋花的奶香落在石阶上，檀香基底在暗处稳稳接住。它把"南亚的傍晚"点着了——甜，但甜得不腻；温，但温得不糊，像一件穿过很多次的棉麻衣，上面是你最熟悉的气味。给很久没好好对待自己的你。',
+        ingredients: ['黄兰花', '鸡蛋花', '印度绿叶香', '檀香']
+      },
+      dorjee: {
+        name: '多吉',
+        nameEn: 'Dorjee',
+        chakra: 'Jin · 金 / 太阳神经丛 · 底气之香',
+        image: 'images/06-dorjee.png',
+        note: '是藏地清晨的甜茶馆，丁香的辛、肉桂的暖在铜壶边碰出一点火星，缬草在底下稳稳托住。"多吉"在藏语里意为"金刚"——不破的那种。它不是温柔的香，是有重力的香，初燃锋利，燃到中段反而温厚，像一只无形的手按在胃上说：别怕。给要自己撑过一天的早上。',
+        ingredients: ['丁香', '肉桂', '缬草', '多种木质调']
+      },
+      citronella: {
+        name: '香茅',
+        nameEn: 'Citronella',
+        chakra: 'Shui · 水 / 喉轮 · 清言之香',
+        image: 'images/07-citronella.png',
+        note: '是雨季来临前的傍晚，屋檐下挂着的香茅被风吹得一阵阵地凉。尼泊尔与斯里兰卡的香茅精油，气味是绿色的——清亮、微酸，像切开一颗青柠时溅出的汁水，哗地一下，像夏天午后突然进来的穿堂风。它不似香水精致，却能把闷热和混沌一起推远。给一觉醒来还累、盯着屏幕发呆的你。',
+        ingredients: ['尼泊尔香茅精油', '斯里兰卡香茅精油']
+      },
+      austha: {
+        name: '奥斯塔',
+        nameEn: 'Austha Suganda',
+        chakra: 'Ajna · 眉心轮 / 太阳神经丛 · 自我之香',
+        image: 'images/08-austha-suganda.png',
+        note: '是番红花在温水里缓缓散开的那个黄昏，甜暖漫过整间屋子——古代价比黄金的香料，气味不是"贵"，是"远"。缬草从泥土深处翻上安静，甘草收一个悠长的回甘。闻着像见到一位活得很笃定的人，不张扬，但你信他。给觉得自己"不够亮"的下午。',
+        ingredients: ['番红花', '缬草', '甘草']
+      },
+      devdar: {
+        name: '神木',
+        nameEn: 'Devdar',
+        chakra: 'Muladhara · 海底轮 · 扎根之香',
+        image: 'images/09-devdar.png',
+        note: '是喜马拉雅雪线之下那棵站了几百年的雪松，风穿过针叶时带下来的清冽木香。Devdar 在梵语里就是"神木"，寺庙的梁、山民的火塘，都是它的去处。闻它的时候，身体先于大脑做出反应：肩膀松了，脚踩实了。你不必去山里，一支雪松也能把你接回地面。给晚上睡不着、白天醒不过来的人。',
+        ingredients: ['喜马拉雅雪松精油']
+      },
+      cedar: {
+        name: '喜马拉雅雪松',
+        nameEn: 'Himalayan Cedar',
+        chakra: 'Muladhara · 海底轮 · 沉稳之香',
+        image: 'images/10-himalayan-cedar.png',
+        note: '是登山者夜里借宿的山间木屋，炉膛里雪松燃出的干燥暖香，混着门外雪的气味。比"神木"更深一寸的雪松——神木让你落地，它让你坐在地上不着急起来。醇厚的木质香笔直地燃，不帮任何忙，但闻过的人都说：心里那根线，不抖了。给想慢下来的人。',
+        ingredients: ['喜马拉雅雪松', '天然草本']
+      }
+    };
+
+    function openDetail(key) {
+      const p = productData[key];
+      if (!p) return;
+      document.getElementById('detail-img').src = p.image;
+      document.getElementById('detail-chakra').textContent = p.chakra;
+      document.getElementById('detail-name').textContent = p.name;
+      document.getElementById('detail-name-en').textContent = p.nameEn;
+      document.getElementById('detail-note').textContent = p.note;
+      const ingContainer = document.getElementById('detail-ingredients');
+      ingContainer.innerHTML = p.ingredients.map(i => `<span class="detail-ingredient">${i}</span>`).join('');
+      document.getElementById('detailModal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeDetailModal() {
+      document.getElementById('detailModal').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    // Close on backdrop click
+    document.getElementById('detailModal').addEventListener('click', (e) => {
+      if (e.target === e.currentTarget) closeDetailModal();
+    });
+
+    // Close on Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeDetailModal();
+    });
+
     // Product filter
     const filterBtns = document.querySelectorAll('.filter-btn');
     const productCards = document.querySelectorAll('.product-card');
@@ -467,7 +763,6 @@
       });
     });
 
-    // Check URL params for initial filter
     const urlParams = new URLSearchParams(window.location.search);
     const seriesParam = urlParams.get('series');
     if (seriesParam) {
